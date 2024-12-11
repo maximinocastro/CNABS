@@ -1,0 +1,65 @@
+COD. REGISTRO  001001 "0"                                                         
+COD. REMESSA   002002 "1"                                                         
+LITERAL REMESSA003009 "REMESSA"                                                   
+COD. SERVICO   010011 "01"                                                        
+LITERAL SERVICO012026 "COBRANCA"                                                  
+COD. EMPRESA   027046 STRZERO(VAL(SEE->EE_CODEMP),20)                             
+NOME DA EMPRESA047076 SUBS(SM0->M0_NOMECOM,1,25)                                  
+N. BD CAM.COMPE077079 SEE->EE_CODIGO                                              
+NOME DO BANCO  080094 "BRADESCO       "                                           
+DATA GRAVACAO  095100 GRAVADATA(DDATABASE,.F.,2)                                  
+BRANCOS        101108 SPACE(08)                                                   
+IDENT.SISTEMA  109110 "MX"                                                        
+NUM. SEQ. ARQ. 111117 "9"+SEE->EE_ULTDSK                                          
+BRANCOS        118394 SPACE(277)                                                  
+NUM. SEQ. REG. 395400 "000001"                                                    
+COD. REGISTRO  001001 "1"                                                         
+AGENCIA DEBITO 002006 "00000"                                                     
+DIG. AGEN. DEB.007007 "0"                                                         
+RAZAO CONTA COR008012 "00000"                                                     
+NUMERO C/C.    013019 "0000000"                                                   
+DIGITO C/C     020020 "0"                                                         
+DIGITO C/C     021021 "0"                                                         
+COD CARTEIRA   022024 "009"                                                       
+AGENCIA        025029 "0"+SUBSTR(SEE->EE_AGENCIA,1,LEN(SEE->EE_AGENCIA)-1)        
+CONTA CORRENTE 030036 "00"+SUBSTR(ALLTRIM(SEE->EE_CONTA),1,6)                     
+DIG. CONTA COR 037037 SUBSTR(SEE->EE_CONTA,7,1)                                   
+N.CONTR.PARTICI038062                                                             
+N. BCO DEB COMP063065 "000"                                                       
+ZEROS          066070 "00000"                                                     
+IDENT TIT BCO  071082 EXECBLOCK("CISFT08",.F.,.F.)                                
+DESC. BONIFICAC083092 "0000000000"                                                
+COND EMIS COBRA093093 "2"                                                         
+IDEN EMI DEB AU094094 "N"                                                         
+IDEN OPER BCO  095104 SPACE(10)                                                   
+INDIC RATEIO CR105105 SPACE(1)                                                    
+END AVISO DEB A106106                                                             
+BRANCO         107108 SPACE(02)                                                   
+INDENT OCORRENC109110 SE1->E1_OCORREN                                             
+N. DOCUMENTO   111120 SE1->E1_PREFIXO+SE1->E1_NUM+SE1->E1_PARCELA                 
+DATA VENCTO TIT121126 GRAVADATA(SE1->E1_VENCTO,.F.)                               
+VALOR DO TITULO127139 STRZERO(SE1->E1_VALOR * 100,13,0)                           
+BANCO ENC COBRA140142 "000"                                                       
+AGENCIA DEPOSIT143147 "00000"                                                     
+ESPECIE TITULO 148149 "01"                                                        
+IDENTIFICACAO  150150 "N"                                                         
+DATA EMIS TITUL151156 GRAVADATA(SE1->E1_EMISSAO,.F.)                              
+1. INSTRUCAO   157158 STRZERO(VAL(SUBSTR(SE1->E1_INSTR1,1,2)))                    
+2. INSTRUCAO   159160 STRZERO(VAL(SUBSTR(SE1->E1_INSTR2,1,2)))                    
+VALOR P/DIA ATR161173 SE1->E1_VALOR*0.33                                          
+DT LIM CONC DES174179 "000000"                                                    
+VALOR DO DESCON180192 IIF(!EMPTY(SE1->E1_DECRESC),SE1->E1_DECRESC,"0000000000000")
+VALOR IOF      193205 "0000000000000"                                             
+VALOR ABATIMENT206218 0000000000000                                               
+IDEN TP INS SAC219220 "02"                                                        
+N. INSCR SACADO221234 SA1->A1_CGC                                                 
+NOME SACADO    235274 SUBSTR(SA1->A1_NOME,1,40)                                   
+ENDERECO COMPLE275314 SUBSTR(SA1->A1_ENDCOB,1,40)                                 
+1. MENSAGEM    315326 SPACE(12)                                                   
+CEP  SACADO    327331 SUBSTR(SA1->A1_CEP,1,5)                                     
+SUFIXO DO CEP  332334 SUBSTR(SA1->A1_CEP,6,8)                                     
+SAC/AVAL 2.MENS335394 SPACE(60)                                                   
+N. SEQUENC REG 395400 INCREMENTA()                                                
+COD. REGISTRO  001001 "9"                                                         
+BRANCO         002394 SPACE(393)                                                  
+N. SEQUEN REG  395400 INCREMENTA()                                                

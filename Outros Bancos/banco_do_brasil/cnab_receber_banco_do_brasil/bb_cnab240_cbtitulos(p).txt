@@ -1,0 +1,1758 @@
+01. APRESENTACAO..  eh  o  CONJUNTO DE  INFORMACOES  que  define  e   
+    orienta  o intercambio entre bancos e as empresas, na prestacao de
+    servicos bancarios. A padronizacao eh da FEBRABAN e adotada por   
+    todos  os  bancos, e qualquer alteracao das especificacoes        
+    apresentadas  nestas  rotinas deverah ser aprovada  pelo          
+    CNABFEBRABAN.                                                     
+                                                                      
+                                                                      
+02. SERVICOS BANCARIOS OFERECIDOS..                             /-/   
+    a) pagamentos de salarios, fornecedores, dividendos e  etc,  na   
+       forma de credito em conta corrente ou DOC e pagamento   com    
+       autenticacao.,                                                 
+    b) liquidacao  de titulos em carteira de cobranca  /no  proprio   
+       Banco/ e pagamento de titulos em  outros  bancos /no  banco do 
+       cedente, via compensacao/.,                                    
+    c) geracao de extrato de conta para conciliacao bancaria.,        
+    d) informacoes  para  titulos em carteira de cobranca  /entrada de
+       titulos, pedido de baixa, etc./.,                              
+    e) informacoes  ao  sacado dos titulos capturados  em  carteira   
+       /bloqueto eletronico/.                                         
+                                                                      
+                                                                      
+03. CARACTERISTICAS DO ARQUIVO..                                      
+    a) Modalidade - registros fixos.,                                 
+    b) Tamanho dos registros - 240 bytes.,                            
+    c) Tipos de registros..                                           
+       I      - 0 /IGUAL/  Header de arquivo.,                        
+       II     - 1 /IGUAL/  Header de lote.,                           
+       III    - 3 /IGUAL/  Detalhe.,                                  
+       IV     - 5 /IGUAL/  Trailer de lote.,                          
+       V      - 9 /IGUAL/  Trailer de arquivo.,                       
+    d) Alinhamento  de  campos  numericos  -  sempre  a  direita  e   
+       preenchidos com zeros a esquerda.,                             
+    e) Alinhamento  de campos alfanumericos - sempre a  esquerda  e   
+       preenchidos com brancos a direita.                             
+                                                                      
+                                                                      
+04. COMPOSICAO DO ARQUIVO..                                           
+    a) Header de Arquivo.,                                            
+    b) Lotes de Servico / tipo de servico /forma de lancamento/.,     
+    c) Trailer de Arquivo.                                            
+       OBS: OBS.. um  arquivo  pode conter lotes de servicos          
+            distintos.  Os registros  Header  e  Trailer de arquivo   
+            tem  composicao fixa/padrao.                              
+                                                                      
+                                                                      
+05. COMPOSICAO DO LOTE DE SERVICO..                                   
+    a) Um registro Header de lote.,                                   
+    b) Registro de detalhe /lancamento/.,                             
+    c) Um registro de Trailer de lote.                                
+       OBS: OBS.. um  lote  de servico deve conter um unico tipo de   
+            servico e uma unica forma de lancamento.                  
+                                                                      
+                                                                      
+06. O  registro de Header /1/ e Trailer /5/ de lote e os de Detalhe   
+    /3/  sao compostos de campos fixos, comuns a todos os Tipos  de   
+    Servicos   e  Formas  de  Lancamentos,  e  campos  especificos,   
+    padroes  para  cada  um  dos Tipos  de  Servicos  e  Formas  de   
+    Lancamentos.                                                      
+                                                                      
+                                                                      
+07. Um  registro  de detalhe eh composto de 17 tipos  de  segmentos   
+    definidos conforme o Tipo de Servico e a Forma de Lancamento.     
+                                                                      
+                                                                      
+08. Leiaute do arquivo..                                        /-/   
+    REGISTRO DE HEADER DE ARQUIVO - Registro                          
+                                                                      
+LOTE.. CREDITO EM CONTA CORRENTE                                      
+Registro Header de lote                                               
+Registro Detalhe - Segmento A /Obrigatorio/                           
+Registro Detalhe - Segmento B /Opcional/                              
+Registro Detalhe - Segmento C /Opcional/                              
+Registro Trailer de lote                                              
+                                                                      
+LOTE.. PAGAMENTO ATRAVES DE CHEQUE, OP, DOC E PAGAMENTO COM           
+AUTENTICACAO                                                          
+Registro Header de lote                                               
+Registro Detalhe - Segmento A /Obrigatorio/                           
+Registro Detalhe - Segmento B /Opcional/                              
+Registro Detalhe - Segmento C /Opcional/                              
+Registro Trailer de lote                                              
+                                                                      
+LOTE.. EXTRATO CONTA CORRENTE PARA CONCILIACAO BANCARIA Registro      
+Header de lote                                                        
+Registro Detalhe - Segmento E /Obrigatorio/                           
+Registro Trailer de lote                                              
+                                                                      
+LOTE.. LIQUIDACAO DE TITULOS EM CARTEIRA DE COBRANCA         /-/      
+Registro Header de lote                                               
+Registro Detalhe - Segmento J /Obrigatorio/                           
+OU                                                                    
+Registro Trailer de lote                                              
+                                                                      
+LOTE.. PAGAMENTOS DE TITULOS EM OUTROS BANCOS                /-/      
+Registro Header de lote                                               
+Registro Detalhe - Segmento J /Obrigatorio/                           
+OU                                                                    
+Registro Trailer de lote                                              
+                                                                      
+LOTE.. TITULOS EM CARTEIRA DE COBRANCA                                
+Registro Header de lote                                               
+Registro Detalhe - Segmento P /Obrigatorio/                           
+Registro Detalhe - Segmento Q /Obrigatorio/                           
+Registro Detalhe - Segmento R /Opcional/                              
+Registro Detalhe - Segmento S /Opcional/                              
+Registro Detalhe - Segmento T /Obrigatorio/                           
+Registro Detalhe - Segmento U /Obrigatorio/                           
+Registro Trailer de lote                                              
+                                                                      
+                                                                      
+LOTE.. TITULOS CAPTURADOS EM CARTEIRA /BLOQUETO ELETRONICO/ Registro  
+Header de lote                                                        
+Registro Detalhe - Segmento G /Obrigatorio/                           
+Registro Detalhe - Segmento H /Opcional/                              
+Registro Trailer de lote                                              
+                                                                      
+REGISTRO TRAILER DE ARQUIVO - REGISTRO 9                              
+/-/                                                                   
+                                                                      
+09. As  notas e informacoes complementares apresentadas em codigos    
+    alfanumericos  nos  leiautes  dos  arquivos estao esclarecidas no 
+    titulo Quadros e Tabelas.                                         
+                          
+01. HEADER DE ARQUIVO   - REGISTRO 0                                  
+    ----------------------------------------------------------------- 
+*-----------------------------------------------------------------*   
+!CAMPO                          !POSICAO! N !N  ! CONTEUDO    !NO-!   
+!                               !DE !ATE!DIG!DEC!             !TAS!   
+!-------------------------------!---!---!---!---!-------------!---!   
+!CODIGO DO BANCO NA COMPENSACAO !  1!  3!  3! - !NUMERICO     !54 !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!LOTE DE SERVICO                !  4!  7!  4! - ! 0000        ! 1 !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!REGISTRO HEADER DE ARQUIVO     !  8!  8!  1! - ! 0           ! 2 !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!USO EXCLUSIVO FEBRABAN/CNAB    !  9! 17!  9! - !BRANCOS      !   !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!TIPO DE INSCRICAO DA EMPRESA   ! 18! 18!  1! - !1-CPF, 2-CGC ! 6 !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!N  DE INSCRICAO DA EMPRESA     ! 19! 32! 14! - !NUMERICO     ! 6 !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!CODIGO DO CONVENIO NO BANCO    ! 33! 52! 20! - !ALFANUMERICO !6/7!   
+!-------------------------------!---!---!---!---!-------------!---!   
+!AGENCIA MANTENEDORA DA CONTA   ! 53! 57!  5! - !NUMERICO     !6/8!   
+!-------------------------------!---!---!---!---!-------------!---!   
+!DIGITO VERIFICADOR DA AGENCIA  ! 58! 58!  1! - !ALFANUMERICO !6/8!   
+!-------------------------------!---!---!---!---!-------------!---!   
+!NUMERO DA CONTA CORRENTE       ! 59! 70! 12! - !NUMERICO     !6/8!   
+!-------------------------------!---!---!---!---!-------------!---!   
+!DIGITO VERIFICADOR DA CONTA    ! 71! 71!  1! - !ALFANUMERICO !6/8!   
+!-------------------------------!---!---!---!---!-------------!---!   
+!DIGITO VERIFICADOR DA AG/CONTA ! 72! 72!  1! - !ALFANUMERICO !6/8!   
+!-------------------------------!---!---!---!---!-------------!---!   
+!NOME DA EMPRESA                ! 73!102! 30! - !ALFANUMERICO !   !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!NOME DO BANCO                  !103!132! 30! - !ALFANUMERICO !   !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!USO EXCLUSIVO FEBRABAN/CNAB    !133!142! 10! - !BRANCOS      !   !   
+!-----------------------------------------------------------------!   
+!CODIGO REMESSA / RETORNO       !143!143!  1! - !1-REM e 2-RET!   !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!DATA DE GERACAO DO ARQUIVO     !144!151!  8! - !NUM/DDMMAAAA/!   !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!HORA DE GERACAO DO ARQUIVO     !152!157!  6! - !NUM /HHMMSS/ !   !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!N  SEQUENCIAL DO ARQUIVO       !158!163!  6! - !NUMERICO     !17 !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!N DA VERSAO DO LAYOUT DO ARQUIV!164!166!  3! - ! 030         ! 9 !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!DENSIDADE DE GRAVACAO DO ARQUIV!167!171!  5! - !NUMERICO/BPI/!   !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!PARA USO RESERVADO DO BANCO    !172!191! 20! - !ALFANUMERICO !   !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!PARA USO RESERVADO DA EMPRESA  !192!211! 20! - !ALFANUMERICO !   !   
+*-----------------------------------------------------------------*   
+                                                                      
+HEADER DE ARQUIVO   - REGISTRO 0                            /CONT./   
+------------------------------------------------------------------    
+*-----------------------------------------------------------------*   
+!USO EXCLUSIVO FEBRABAN/CNAB    !212!222! 11! - !BRANCOS      !   !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!IDENTIFICACAO  COBRANCA S/PAPEL!223!225!  3! - !'CSP'        !   !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!USO EXCLUSIVO DAS VANS         !226!228!  3! - !NUMERICO     !   !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!TIPO DE SERVICO                !229!230!  2! - !ALFANUMERICO !52 !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!CODIGOS DAS OCORRENCIAS        !231!240! 10! - !ALFANUMERICO !53 !   
+*-----------------------------------------------------------------*   
+
+01. HEADER DE LOTE  -  REGISTRO 1                                         
+-----------------------------------------------------------------     
+*-----------------------------------------------------------------*   
+!CAMPO                          !POSICAO! N !N  ! CONTEUDO    !NO-!   
+!                               !DE !ATE!DIG!DEC!             !TAS!   
+!-------------------------------!---!---!---!---!-------------!---!   
+!CODIGO DO BANCO NA COMPENSACAO !  1!  3!  3! - !NUMERICO     !   !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!LOTE DE SERVICO                !  4!  7!  4! - !NUMERICO     ! 1 !   
+!-------------------------------!---!---!---!---!------------ !---!   
+!REGISTRO HEADER DO LOTE        !  8!  8!  1! - ! 1           ! 2 !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!TIPO DE OPERACAO               !  9!  9!  1! - !ALFANUMERICO ! 3 !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!TIPO DE SERVICO                ! 10! 11!  2! - ! 01          ! 4 !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!FORMA DE LANCAMENTO            ! 12! 13!  2! - !ZEROS        !39 !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!N  DA VERSAO DO LAYOUT DO LOTE ! 14! 16!  3! - !'020'        !45 !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!USO EXCLUSIVO FEBRABAN/CNAB    ! 17! 17!  1! - !BRANCOS      !   !   
+!-----------------------------------------------------------------!   
+!TIPO DE INSCRICAO DA EMPRESA   ! 18! 18!  1! - !1-CPF, 2-CGC !   !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!N  DE INSCRICAO DA EMPRESA     ! 19! 33! 15! - !NUMERICO     !   !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!CODIGO DO CONVENIO NO BANCO    ! 34! 53! 20! - !ALFANUMERICO ! 7 !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!AGENCIA MANTENEDORA DA CONTA   ! 54! 58!  5! _ !NUMERICO     !   !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!DIGITO VERIFICADOR DA AGENCIA  ! 59! 59!  1! - !ALFANUMERICO !   !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!NUMERO DA CONTA CORRENTE       ! 60! 71! 12! _ !NUMERICO     !   !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!DIGITO VERIFICADOR DA CONTA    ! 72! 72!  1! _ !ALFANUMERICO !   !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!DIGITO VERIFICADOR DA AG/CONTA ! 73! 73!  1! _ !ALFANUMERICO !   !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!NOME DA EMPRESA                ! 74!103! 30! - !ALFANUMERICO !   !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!MENSAGEM 1                     !104!143! 40! - !ALFANUMERICO !19 !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!MENSAGEM 2                     !144!183! 40! - !ALFANUMERICO !19 !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!NUMERO REMESSA/RETORNO         !184!191!  8! - !NUMERICO     !   !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!DATA DE GRAVACAO REMESSA/RETORN!192!199!  8! - !DDMMAAAA     !   !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!DATA DO CREDITO                !200!207!  8! - !DDMMAAAA     !   !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!USO EXCLUSIVO FEBRABAN/CNAB    !208!240! 33! - !BRANCOS      !   !   
+*-----------------------------------------------------------------*   
+                                                                      
+REMESSA                                                               
+02.DETALHE -  REGISTRO 3  -  SEGMENTO P  /OBRIGATORIO/                   
+ 
+*-----------------------------------------------------------------*   
+!CAMPO                          !POSICAO! N !N  ! CONTEUDO    !NO-!   
+!                               !DE !ATE!DIG!DEC!             !TAS!   
+!-------------------------------!---!---!---!---!-------------!---!   
+!CODIGO DO BANCO NA COMPENSACAO !  1!  3!  3! - !NUMERICO     !   !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!LOTE DE SERVICO                !  4!  7!  4! - !NUMERICO     ! 1 !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!REGISTRO DETALHE               !  8!  8!  1! - !Igual a 3    ! 2 !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!N  SEQUENCIAL DO REG. NO LOTE  !  9! 13!  5! - !NUMERICO     !10 !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!COD. SEGMENTO DO REG. DETALHE  ! 14! 14!  1! - !Igual a P    !11 !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!USO EXCLUSIVO FEBRABAN/CNAB    ! 15! 15!  1! - !BRANCOS      !   !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!CODIGO DE MOVIMENTO            ! 16! 17!  2! - !NUMERICO     !20 !   
+!-----------------------------------------------------------------!   
+!AGENCIA MANTENEDORA DA CONTA   ! 18! 22!  5! _ !NUMERICO     ! 8 !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!DIGITO VERIFICADOR DA AGENCIA  ! 23! 23!  1! _ !ALFANUMERICO ! 8 !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!NUMERO DA CONTA CORRENTE       ! 24! 35! 12! _ !NUMERICO     ! 8 !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!DIGITO VERIFICADOR DA CONTA    ! 36! 36!  1! _ !ALFANUMERICO ! 8 !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!DIGITO VERIFICADOR DA AG/CONTA ! 37! 37!  1! - !ALFANUMERICO ! 8 !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!IDENTIFICACAO DO TITULO NO BANC! 38! 57! 20! - !ALFANUMERICO !21 !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!CODIGO DA CARTEIRA             ! 58! 58!  1! _ !NUMERICO     !22 !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!FORMA DE CADASTRAMENTO DO TITU-! 59! 59!  1! _ !1-COM CADAST !   !   
+!LO NO BANCO                    !   !   !   !   !2-SEM CADAST !   !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!TIPO DE DOCUMENTO              ! 60! 60!  1! _ !1-TRADICIONAL!   !   
+!                               !   !   !   !   !2-ESCRITURAL !   !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!IDENTIFI DA EMISSAO DO BLOQUETO! 61! 61!  1! _ !NUMERICO     !23 !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!IDENTIFICACAO DA DISTRIBUICAO  ! 62! 62!  1! - !1-BANCO      !   !   
+!                               !   !   !   !   !2-CLIENTE    !   !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!NUMERO DO DOCUMENTO DE COBRANCA! 63! 77! 15! - !ALFANUMERICO !24 !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!DATA DE VENCIMENTO DO TITULO   ! 78! 85!  8! - !DDMMAAAA     !48 !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!VALOR NOMINAL DO TITULO        ! 86!100! 13! 2 !NUMERICO     !   !   
+*-----------------------------------------------------------------*   
+!AGENCIA ENCARREGADA DA COBRANCA!101!105!  5! - !NUMERICO     !49 !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!DIGITO VERIFICADOR DA AGENCIA  !106!106!  1! - !ALFANUMERICO !49 !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!ESPECIE DO TITULO              !107!108!  2! - !NUMERICO     !25 !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!IDENTIFICACAO DE TITULO ACEITO/!109!109!  1! - !A - ACEITE   !   !   
+!NAO ACEITO                     !   !   !   !   !N - NAO ACEIT!   !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!DATA DA EMISSAO DO TITULO      !110!117!  8! - !DDMMAAAA     !   !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!CODIGO DO JUROS DE MORA        !118!118!  1! - !NUMERICO     !26 !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!DATA DO JUROS DE MORA          !119!126!  8! - !DDMMAAAA     !27 !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!JUROS DE MORA POR DIA/TAXA     !127!141! 13! 2 !NUMERICO     !   !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!CODIGO DO DESCONTO 1           !142!142!  1! - !NUMERICO     !28 !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!DATA DO DESCONTO 1             !143!150!  8! - !DDMMAAAA     !   !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!VALOR/PERCENTUAL A SER CONCEDID!151!165! 13! 2 !NUMERICO     !   !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!VALOR DO IOF A SER RECOLHIDO   !166!180! 13! 2 !NUMERICO     !   !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!VALOR DO ABATIMENTO            !181!195! 13! 2 !NUMERICO     !   !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!IDENTIFICACAO DO TIT. NA EMPRES!196!220! 25! - !ALFANUMERICO !   !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!CODIGO PARA PROTESTO           !221!221!  1! - !1-DIAS CORRID!   !   
+!                               !   !   !   !   !2-DIAS UTEIS !   !   
+!                               !   !   !   !   !3-NAO PROTES !   !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!NUMERO DE DIAS PARA PROTESTO   !222!223!  2! - !NUMERICO     !   !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!CODIGO PARA BAIXA/DEVOLUCAO    !224!224!  1! - !1-BAIXAR/DEV !   !   
+!                               !   !   !   !   !2-NAO BAIXAR/!   !   
+!                               !   !   !   !   ! NAO DEVOLVER!   !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!NUMERO DE DIAS PARA BAIXA/DEVOL!225!227!  3! - !DIAS CORRIDOS!   !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!CODIGO DA MOEDA                !228!229!  2! - !NUMERICO     !29 !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!N. DO CONTR. DA OPERACAO D CRED!230!239! 10! - !NUMERICO     !   !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!USO EXCLUSIVO FEBRABAN/CNAB    !240!240!  1! - !BRANCOS      !   !   
+*-----------------------------------------------------------------* 
+  REMESSA                                                               
+                                                                      
+DETALHE -  REGISTRO 3  -  SEGMENTO Q    /OBRIGATORIO/                 
+-----------------------------------------------------------------     
+*-----------------------------------------------------------------*   
+!CAMPO                          !POSICAO! N !N  ! CONTEUDO    !NO-!   
+!                               !DE !ATE!DIG!DEC!             !TAS!   
+!-------------------------------!---!---!---!---!-------------!---!   
+!CODIGO DO BANCO NA COMPENSACAO !  1!  3!  3! - !NUMERICO     !   !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!LOTE DE SERVICO                !  4!  7!  4! - !NUMERICO     ! 1 !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!REGISTRO DETALHE               !  8!  8!  1! - ! 3           ! 2 !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!N  SEQUENCIAL DO REG. NO LOTE  !  9! 13!  5! - !NUMERICO     !10 !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!COD. SEGMENTO DO REG. DETALHE  ! 14! 14!  1! - ! Q           !11 !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!USO EXCLUSIVO FEBRABAN/CNAB    ! 15! 15!  1! - !BRANCOS      !   !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!CODIGO DE MOVIMENTO            ! 16! 17!  2! - !NUMERICO     !20 !   
+!-----------------------------------------------------------------!   
+!TIPO DE INSCRICAO              ! 18! 18!  1! - !NUMERICO     !30 !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!NUMERO DE INSCRICAO            ! 19! 33! 15! - !NUMERICO     !30 !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!NOME                           ! 34! 73! 40! - !ALFANUMERICO !   !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!ENDERECO                       ! 74!113! 40! - !ALFANUMERICO !   !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!BAIRRO                         !114!128! 15! - !ALFANUMERICO !   !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!CEP                            !129!133!  5! - !NUMERICO     !   !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!SUFIXO DO CEP                  !134!136!  3! - !NUMERICO     !   !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!CIDADE                         !137!151! 15! - !ALFANUMERICO !   !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!UNIDADE DA FEDERACAO           !152!153!  2! - !ALFANUMERICO !   !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!TIPO DE INSCRICAO              !154!154!  1! - !NUMERICO     !30 !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!NUMERO DE INSCRICAO            !155!169! 15! - !NUMERICO     !30 !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!NOME DO SACADOR/AVALISTA       !170!209! 40! - !ALFANUMERICO !31 !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!COD. BCO CORRESP. NA COMPENSACA!210!212!  3! - !NUMERICO     !32 !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!NOSSO NUM. NO BCO CORRESPONDENT!213!232! 20! - !ALFANUMERICO !32 !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!USO EXCLUSIVO FEBRABAN/CNAB    !233!240!  8! - !BRANCOS      !   !   
+*-----------------------------------------------------------------*   
+                                                                      
+REMESSA                                                               
+                                                                      
+DETALHE  -  REGISTRO 3  -  SEGMENTO R   /OPCIONAL/                    
+-----------------------------------------------------------------     
+*-----------------------------------------------------------------*   
+!CAMPO                          !POSICAO! N !N  ! CONTEUDO    !NO-!   
+!                               !DE !ATE!DIG!DEC!             !TAS!   
+!-------------------------------!---!---!---!---!-------------!---!   
+!CODIGO DO BANCO NA COMPENSACAO !  1!  3!  3! - !NUMERICO     !   !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!LOTE DE SERVICO                !  4!  7!  4! - !NUMERICO     ! 1 !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!REGISTRO DETALHE               !  8!  8!  1! - ! 3           ! 2 !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!N  SEQUENCIAL DO REG. NO LOTE  !  9! 13!  5! - !NUMERICO     !10 !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!COD. SEGMENTO DO REG. DETALHE  ! 14! 14!  1! - !'R'          !11 !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!USO EXCLUSIVO FEBRABAN/CNAB    ! 15! 15!  1! - !BRANCOS      !   !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!CODIGO DE MOVIMENTO            ! 16! 17!  2! - !NUMERICO     !20 !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!CODIGO DO DESCONTO 2           ! 18! 18!  1! - !NUMERICO     !28 !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!DATA DO DESCONTO 2             ! 19! 26!  8! - !DDMMAAAA     !   !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!VALOR/PERCENTUAL A SER CONCEDID! 27! 41! 13! 2 !NUMERICO     !   !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!CODIGO DO DESCONTO 3           ! 42! 42!  1! - !NUMERICO     !28 !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!DATA DO DESCONTO 3             ! 43! 50!  8! - !DDMMAAAA     !   !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!VALOR/PERCENTUAL A SER CONCEDID! 51! 65! 13! 2 !NUMERICO     !   !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!CODIGO DA MULTA                ! 66! 66!  1! - !1-VALOR FIXO !   !   
+!                               !   !   !   !   !2-PERCENTUAL !   !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!DATA DA MULTA                  ! 67! 74!  8! - !DDMMAAAA     !   !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!VALOR/PERCENTUAL A SER APLICADO! 75! 89! 13! 2 !NUMERICO     !   !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!INFORMACAO DO BANCO AO SACADO  ! 90! 99! 10! - !ALFANUMERICO !33 !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!MENSAGEM 3                     !100!139! 40! - !ALFANUMERICO !34 !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!MENSAGEM 4                     !140!179! 40! - !ALFANUMERICO !34 !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!COD. DO BANCO DA CONTA DO DEBIT!180!182!  3! - !NUMERICO     !   !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!CODIGO DA AGENCIA DO DEBITO    !183!186!  4! - !NUMERICO     !   !   
+*-----------------------------------------------------------------*   
+!CONTA CORRENTE/DV DO DEBITO    !187!199! 13! - !NUMERICO     !   !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!CODIGOS DE OCORRENCIA DO SACADO!200!207!  8! - !NUMERICO     !54 !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!USO EXCLUSIVO FEBRABAN/CNAB    !208!240! 33! - !BRANCOS      !   !   
+*-----------------------------------------------------------------*   
+                                                                      
+                                                                      
+DETALHE  -  REGISTRO  5  -  SEGMENTO S  /OPCIONAL/                    
+*-----------------------------------------------------------------*   
+*-----------------------------------------------------------------*   
+!CAMPO                          !POSICAO! N !N  ! CONTEUDO    !NO-!   
+!                               !DE !ATE!DIG!DEC!             !TAS!   
+!-------------------------------!---!---!---!---!-------------!---!   
+!CODIGO DO BANCO NA COMPENSACAO !  1!  3!  3! - !NUMERICO     !   !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!LOTE DE SERVICO                !  4!  7!  4! - !NUMERICO     ! 1 !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!REGISTRO DETALHE               !  8!  8!  1! - ! 3           ! 2 !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!N  SEQUENCIAL DO REG. NO LOTE  !  9! 13!  5! - !NUMERICO     !10 !   
+!-------------------------------!---!-------!---!-------------!---!   
+!COD. SEGMENTO DO REG. DETALHE  ! 14! 14!  1! - ! S           !11 !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!USO EXCLUSIVO FEBRABAN/CNAB    ! 15! 15!  1! - !BRANCOS      !   !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!CODIGO DE MOVIMENTO            ! 16! 17!  2! - !NUMERICO     !20 !   
+*-----------------------------------------------------------------*   
+PARA TIPO DE IMPRESSAO 1 OU 2 :                                       
+*-----------------------------------------------------------------*   
+!IDENTIFICACAO DA IMPRESSAO     ! 18! 18!  1! - !NUMERICO     !35 !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!NUMERO DA LINHA A SER IMPRESSA ! 19! 20!  2! - !NUMERICO     !36 !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!MENSAGEM A SER IMPRESSA        ! 21!160!140! - !ALFANUMERICO !37 !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!TIPO DO CARACTER A SER IMPRESSO!161!162!  2! - !NUMERICO     !47 !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!USO EXCLUSIVO FEBRABAN/CNAB    !163!240! 78! - !BRANCOS      !   !   
+*-----------------------------------------------------------------* 
+  PARA TIPO DE IMPRESSAO 3 :                                            
+*-----------------------------------------------------------------*   
+!IDENTIFICACAO DA IMPRESSAO     ! 18! 18!  1! - !NUMERICO     !35 !   
+*-----------------------------------------------------------------*   
+!MENSAGEM 5                     ! 19! 58! 40! - !ALFANUMERICO !34 !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!MENSAGEM 6                     ! 59! 98! 40! - !ALFANUMERICO !34 !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!MENSAGEM 7                     ! 99!138! 40! - !ALFANUMERICO !34 !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!MENSAGEM 8                     !139!178! 40! - !ALFANUMERICO !34 !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!MENSAGEM 9                     !179!218! 40! - !ALFANUMERICO !34 !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!USO EXCLUSIVO FEBRABAN/CNAB    !219!240! 22! - !BRANCOS      !   !   
+*-----------------------------------------------------------------*   
+                                                                      
+RETORNO                                                               
+                                                                      
+       DETALHE  -  REGISTRO 3  -  SEGMENTO T   /OBRIGATORIO/                 
+  
+*-----------------------------------------------------------------*   
+!CAMPO                          !POSICAO! N !N  ! CONTEUDO    !NO-!   
+!                               !DE !ATE!DIG!DEC!             !TAS!   
+!-------------------------------!---!---!---!---!-------------!---!   
+!CODIGO DO BANCO NA COMPENSACAO !  1!  3!  3! - !NUMERICO     !   !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!LOTE DE SERVICO                !  4!  7!  4! - !NUMERICO     !   !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!REGISTRO DETALHE               !  8!  8!  1! - ! 3           !   !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!N  SEQUENCIAL DO REG. NO LOTE  !  9! 13!  5! - !NUMERICO     !   !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!COD. SEGMENTO DO REG. DETALHE  ! 14! 14!  1! - ! T           !11 !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!USO EXCLUSIVO FEBRABAN/CNAB    ! 15! 15!  1! - !BRANCOS      !   !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!CODIGO DE MOVIMENTO            ! 16! 17!  2! - !NUMERICO     !40 !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!AGENCIA MANTENEDORA DA CONTA   ! 18! 22!  5! - !NUMERICO     ! 8 !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!DIGITO VERIFICADOR DA AGENCIA  ! 23! 23!  1! - !NUMERICO     ! 8 !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!NUMERO DA CONTA CORRENTE       ! 24! 35! 12! - !NUMERICO     ! 8 !   
+*-------------------------------!---!---!---!---!-------------!---*   
+!DIGITO VERIFICADOR DA CONTA    ! 36! 36!  1! - !NUMERICO     ! 8 !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!DIGITO VERIFICADOR DA AG/CONTA ! 37! 37!  1! - !NUMERICO     ! 8 !   
+!-----------------------------------------------------------------!   
+!IDENTIFICACAO DO TITULO NO BANC! 38! 57! 20! - !ALFANUMERICO !   !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!CODIGO DA CARTEIRA             ! 58! 58!  1! _ !NUMERICO     !22 !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!NUMERO DO DOCUMENTO DE COBRANCA! 59! 73! 15! _ !ALFANUMERICO !24 !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!DATA DO VENCIMENTO DO TITULO   ! 74! 81!  8! _ !NUMERICO     !   !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!VALOR NOMINAL DO TITULO        ! 82! 96! 13! 2 !NUMERICO     !   !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!NUMERO DO BANCO                ! 97! 99!  3! - !NUMERICO     !43 !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!AGENCIA COBRADORA/RECEBEDORA   !100!104!  5! - !NUMERICO     !43 !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!DIGITO VERIFICADOR DA AGENCIA  !105!105!  1! - !NUMERICO     !   !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!IDENTIF. DO TITULO NA EMPRESA  !106!130! 25! - !ALFANUMERICO !   !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!CODIGO DA MOEDA                !131!132!  2!   !NUMERICO     !29 !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!TIPO DE INSCRICAO              !133!133!  1! - !NUMERICO     !30 !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!NUMERO DE INSCRICAO            !134!148! 15! - !NUMERICO     !30 !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!NOME                           !149!188! 40! - !ALFANUMERICO !   !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!N. DO CONTR. DA OPERACAO D CRED!189!198! 10! - !NUMERICO     !   !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!VALOR DA TARIFA/CUSTAS         !199!213! 13! 2 !NUMERICO     !   !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!IDENTIFICACAO PARA REJEICOES,  !214!223! 10! - !NUMERICO     !42 !   
+!TARIFAS, CUSTAS, LIQUID. BAIXAS!   !   !   !   !             !   !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!USO EXCLUSIVO FEBRABAN/CNAB    !224!240! 17! - !NUMERICO     !55 !   
+*-----------------------------------------------------------------*  
+
+RETORNO                                                               
+                                                                      
+  DETALHE  -  REGISTRO 3  -  SEGMENTO U  /OBRIGATORIO/                  
+
+*-----------------------------------------------------------------*   
+!CAMPO                          !POSICAO! N !N  ! CONTEUDO    !NO-!   
+!                               !DE !ATE!DIG!DEC!             !TAS!   
+!-------------------------------!---!---!---!---!-------------!---!   
+!CODIGO DO BANCO NA COMPENSACAO !  1!  3!  3! - !NUMERICO     !   !   
+*-----------------------------------------------------------------*   
+!LOTE DE SERVICO                !  4!  7!  4! - !NUMERICO     !   !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!REGISTRO DETALHE               !  8!  8!  1! - ! 3           !   !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!N  SEQUENCIAL DO REG. NO LOTE  !  9! 13!  5! - !NUMERICO     !   !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!COD. SEGMENTO DO REG. DETALHE  ! 14! 14!  1! - ! U           !11 !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!USO EXCLUSIVO FEBRABAN/CNAB    ! 15! 15!  1! - !BRANCOS      !   !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!CODIGO DE MOVIMENTO            ! 16! 17!  2! - !NUMERICO     !40 !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!JUROS/MULTA/ENCARGOS           ! 18! 32! 13! 2 !NUMERICO     !   !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!VALOR DO DESCONTO CONCEDIDO    ! 33! 47! 13! 2 !NUMERICO     !   !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!VALOR DO ABAT. CONCEDIDO/CANCEL! 48! 62! 13! 2 !NUMERICO     !   !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!VALOR DO IOF RECOLHIDO         ! 63! 77! 13! 2 !NUMERICO     !   !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!VALOR PAGO PELO SACADO         ! 78! 92! 13! 2 !NUMERICO     !   !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!VALOR LIQUIDO A SER CREDITADO  ! 93!107! 13! 2 !NUMERICO     !   !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!VALOR DE OUTRAS DESPESAS       !108!122! 13! 2 !NUMERICO     !   !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!VALOR DE OUTROS CREDITOS       !123!137! 13! 2 !NUMERICO     !   !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!DATA DA OCORRENCIA             !138!145!  8! - !NUMERICO     !   !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!DATA DA EFETIVACAO DO CREDITO  !146!153!  8! - !NUMERICO     !   !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!CODIGO DA OCORRENCIA DO SACADO !154!157!  4! - !ALFANUMERICO !44 !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!DATA DA OCORRENCIA DO SACADO   !158!165!  8! - !ALFANUMERICO !44 !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!VALOR DA OCORRENCIA DO SACADO  !166!180! 13! 2 !NUMERICO     !44 !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!COMPLEM.DA OCORRENCIA DO SACADO!181!210! 30! - !ALFANUMERICO !44 !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!CODIGO DO BCO CORRESP. COMPENS.!211!213!  3! - !NUMERICO     !32 !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!NOSSO NUM. BCO CORRESPONDENTE  !214!233! 20! - !NUMERICO     !32 !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!USO EXCLUSIVO FEBRABAN/CNAB    !234!240!  7! - !BRANCOS      !   !   
+*-----------------------------------------------------------------*   
+                                                                      
+              TRAILER DE LOTE - REGISTRO 5                                          
+
+*-----------------------------------------------------------------*   
+!CAMPO                          !POSICAO! N !N  ! CONTEUDO    !NO-!   
+!                               !DE !ATE!DIG!DEC!             !TAS!   
+!-------------------------------!---!---!---!---!-------------!---!   
+!CODIGO DO BANCO NA COMPENSACAO !  1!  3!  3! - !NUMERICO     !   !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!LOTE DE SERVICO                !  4!  7!  4! - !NUMERICO     ! 1 !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!REGISTRO TRAILER DO LOTE       !  8!  8!  1! - ! 5           ! 2 !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!USO EXCLUSIVO FEBRABAN/CNAB    !  9! 17!  9! - !BRANCOS      !   !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!QUANTIDADE DE REGISTROS DO LOTE! 18! 23!  6! - !NUMERICO     !38 !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!QUANTIDADE DE TIT. EM COBRANCA ! 24! 29!  6! - !NUMERICO     !41 !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!VALOR TOT. DOS TIT. EM CARTEIRA! 30! 46! 15! 2 !NUMERICO     !41 !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!QUANTIDADE DE TIT. EM COBRANCA ! 47! 52!  6! - !NUMERICO     !41 !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!VALOR TOT DOS TIT. EM CARTEIRAS! 53! 69! 15! 2 !NUMERICO     !41 !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!QUANTIDADE DE TIT. EM COBRANCA ! 70! 75!  6! - !NUMERICO     !41 !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!VALOR TOT DOS TIT. EM CARTEIRAS! 76! 92! 15! 2 !NUMERICO     !41 !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!QUANTIDADE DE TIT. EM COBRANCA ! 93! 98!  6! - !NUMERICO     !41 !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!VALOR TOT DOS TIT. EM CARTEIRAS! 99!115! 15! 2 !NUMERICO     !41 !
+!-------------------------------!---!---!---!---!-------------!--   
+ NUMERO DO AVISO DE LANCAMENTO  !116!123!  8! - !ALFANUMERICO !41 !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!USO EXCLUSIVO FEBRABAN/CNAB    !124!240!117! - !BRANCOS      !   !   
+*-----------------------------------------------------------------*   
+  
+       TRAILER DE ARQUIVO  -  REGISTRO  9                                    
+   
+*-----------------------------------------------------------------*  
+!CAMPO                          !POSICAO! N !N  ! CONTEUDO    !NO-! ! 
+                                !DE !ATE!DIG!DEC!             !TAS!   
+!-------------------------------!---!---!---!---!-------------!---!   
+!CODIGO DO BANCO NA COMPENSACAO !  1!  3!  3! - !NUMERICO     !   !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!LOTE DE SERVICO                !  4!  7!  4! - ! 9999        ! 1 !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!REGISTRO TRAILER DE ARQUIVO    !  8!  8!  1! - ! 9           ! 2 !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!USO EXCLUSIVO FEBRABAN/CNAB    !  9! 17!  9! - !BRANCOS      !   !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!QUANTID. DE LOTES DO ARQUIVO   ! 18! 23!  6! - !NUM. REGIST. !   !  
+                                !   !   !   !   !TIPO - 1     !   !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!QUANTID. DE REGISTROS DO ARQUIV! 24! 29!  6! - !NUM.REG.TIPOS!   !  
+                                !   !   !   !   ! 0+1+3+5+9   !   !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!QTDADE DE CONTAS P/CONC.- LOTES! 30! 35!  6! - !NUM.REG.     !   !  
+                                !   !   !   !   !TIPO-1 OPER-E! E !   
+!-------------------------------!---!---!---!---!-------------!---!   
+!USO EXCLUSIVO FEBRABAN/CNAB    ! 36!240!205! - !BRANCOS      !   !   
+*-----------------------------------------------------------------*  
+
+                
+*-----------------------------------------------------------------*   
+!    NOTAS        !   INFORMACOES COMPLEMENTARES                  !   
+!-----------------------------------------------------------------!   
+!/B/              !Especificacoes do Codigo de Barras do Bloqueto !   
+!CODIGO DE BARRAS !de Cobranca-Ficha de  Compensacao /Modelo CADOC!   
+!                 !24044-4, Carta Circular N  2414, de 07.10.93,  !   
+!                 !do Banco Central do Brasil/.                   !   
+!                 !Alteracao nas  especificacoes do Codigo  de    !   
+!                 !Barras - Introducao  de Digito de Auto Confe-  !   
+!                 !rencia /Carta Circular N  2531, de 24.02.95/.  !   
+!-----------------!-----------------------------------------------!   
+!/E/              !Campo especifico para o servico Conciliacao    !   
+!                 !Bancaria.                                      !   
+!-----------------!-----------------------------------------------!   
+!/R/              !Campos a serem preenchidos quando o arquivo eh !   
+!                 !Retorno /Codigo - 2 no Header de Arquivo/      !   
+!-----------------------------------------------------------------!   
+!/01/             !Identifica um Lote de Servico.                 !   
+!LOTE             !Sequencial e nao deve ser repetido dentro do   !   
+!                 !arquivo.                                       !   
+!                 !As numeracoes 0000 e 9999 sao exclusivas para  !   
+!                 !o Header e Trailer do Arquivo respectivamente. !   
+!-----------------!-----------------------------------------------!   
+!/02/             !Identifica o tipo do Registro. Ver 4.0         !   
+!REGISTRO         !Composicao do Arquivo                          !   
+!-----------------!-----------------------------------------------!   
+!/03/             !Indica a operacao que devera ser realizada com !   
+!TIPO DE OPERACAO !os registros Detalhe do Lote.                  !   
+!                 !Deve constar apenas um tipo por Lote:          !   
+!                 ! C - Lancamento a Credito                      !   
+!                 ! D - Lancamento a Debito                       !   
+!                 ! E - Extrato para Conciliacao                  !   
+!                 ! I - Informacoes de titulos capturados do      !   
+!                 !     proprio banco                             !   
+!                 ! R - Arquivo Remessa                           !   
+!                 ! T - Arquivo Retorno.                          !   
+!-----------------!-----------------------------------------------!   
+!/4/              !Indica o tipo de servico que o lote contem :   !   
+!TIPO DE SERVICO  ! 01 - Cobranca                                 !   
+!                 ! 02 - Cobranca sem Papel                       !   
+!                 ! 03 - Bloqueto Eletronico                      !   
+!                 ! 04 - Conciliacao Bancaria                     !   
+!                 ! 05 - Debitos                                  !   
+!                 ! 10 - Pagamento Dividendos                     !   
+!                 ! 20 - Pagamento Fornecedor                     !   
+!                 ! 30 - Pagamento Salarios                       !   
+!                 ! 50 - Pagamento Sinistros Segurados            !   
+!                 ! 60 - Pagamento Despesas Viajante em Transito  !   
+*-----------------------------------------------------------------*   
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+*-----------------------------------------------------------------*   
+!    NOTAS        !   INFORMACOES COMPLEMENTARES                  !   
+!-----------------------------------------------------------------!   
+!/4/              !Indica o tipo de servico que o lote contem :   !   
+!TIPO DE SERVICO  ! 70 - Pagamento Autorizado                     !   
+!     /CONT./     ! 75 - Pagamento Credenciados                   !   
+!                 ! 80 - Pagamento Representantes/Vendedores      !   
+!                 !      Autorizados                              !   
+!                 ! 90 - Pagamento Beneficios                     !   
+!                 ! 98 - Pagamento Diversos.                      !   
+!-----------------!-----------------------------------------------!   
+!/5/              !Indica a forma de lancamento que o lote contem:!   
+!FORMA DE LANCA-  ! 01 - Credito em Conta Corrente                !   
+!MENTO            ! 02 - Cheque Pagamento/Administrativo          !   
+!                 ! 03 - DOC/TED                                  !   
+!                 ! 04 - Cartao Salario /Servico Tipo 30/         !   
+!                 ! 05 - Credito em Conta Poupanca                !   
+!                 ! 30 - Liquidacao de Titulos do proprio Banco   !   
+!                 ! 31 - Pagamento de Titulos de outros Bancos    !   
+!-----------------!-----------------------------------------------!   
+!/6/              !Identificacao da Empresa no Banco.             !   
+!EMPRESA          !Inscricao: Tipo e Numero /CPF ou CGC/, e/ou.   !   
+!                 !Convenio: Codigo do convenio Empresa/Banco,    !   
+!                 !          e/ou Conta Corrente                  !   
+!                 !Obs.: No registro header de arquivo pode ser da!   
+!                 !empresa "mae"do grupo ou da matriz. a identifi-!   
+!                 !cacao da  empresa  no registro header de lote  !   
+!                 !pode ser por empresa coligada ou por filial. a !   
+!                 !identificacao pode se repetir quando for unica !   
+!-----------------!-----------------------------------------------!   
+!/7/              !Identifica a Empresa no Banco para determinados!   
+!CONVENIO         !tipos de servicos. Observar as regras de preen-!   
+!                 !chimento abaixo no que se refere ao header  de !   
+!                 !servico/lote:                                  !   
+!                 !"9999999994444CCVVV  " /20 bytes/, onde:       !   
+!                 !                                               !   
+!                 !999999999 - codigo do convenio,numerico,alinha-!   
+!                 !            do a direita,preenchido com zeros a!   
+!                 !            esquerda.                          !   
+!                 !            Para servicos de pagamentos PGT  e !   
+!                 !            cobranca cedente eh obrigatorio    !   
+!                 !            Para servicos de BBCHEQUE e cobran-!   
+!                 !            ca sacada sera utilizado o numero  !   
+!                 !            do contrato respectivo.            !   
+!                 !                                               !   
+!                 !4444      - codigo do produto:                 !   
+*-----------------------------------------------------------------*   
+*-----------------------------------------------------------------*   
+!    NOTAS        !   INFORMACOES COMPLEMENTARES                  !   
+!-----------------------------------------------------------------!   
+!/7/              !            -cobranca cedente - 0014           !   
+!CONVENIO /CONT./ !            -cobranca sacada  - 0019           !   
+!                 !            -pagamento fornecedores-PGT - 0126 !   
+!                 !            -captura de cheques - 0024         !   
+!                 !CC        - carteira de cobranca para o caso de!   
+!                 !            cobranca cedente - obrigatorio     !   
+!                 !VVV       - variacao da carteira de cobranca   !   
+!                 !            para o caso de cobranca cedente -  !   
+!                 !            obrigatorio.                       !   
+!                 !                                               !   
+!                 !As duas ultimas posicoes deixar em branco.     !   
+!                 !Para usuarios do sistema SAP R.3, informar os  !   
+!                 !campos acima apenas nas remessas de cobranca   !   
+!                 !cedente. Nos lotes de Credito em conta, DOC  ou!   
+!                 !pagamento eletronico de titulos, deixar obriga-!   
+!                 !toriamente em branco                           !   
+!-----------------!-----------------------------------------------!   
+!/8/              !Codigo da Agencia mantenedora da Conta e seu DV!   
+!CONTA CORRENTE   !Numero da Conta e seu DV.                      !   
+!                 !DV dos campos Agencia e Conta.                 !   
+!                 !Obs.: Para os bancos que utilizam duas posicoes!   
+!                 !para o DV /digito verificador/, preencher a 1  !   
+!                 !posicao no campo DV da conta e a 2  posicao no !   
+!                 !campo DV da agencia/conta.                     !   
+!-----------------!-----------------------------------------------!   
+!/9/              !Identifica o N  da Versao do Layout do Arquivo,!   
+!LEIAUTE          !composto de : Versao  - 2 digitos              !   
+!                 !              Release - 1 digito               !   
+!                 !Obs.: Somente podera ser modificado quando     !   
+!                 !houver alteracoes no header/trailer de arquivo !   
+!                 !e desde que aprovadas  pelo cnab.              !   
+!-----------------!-----------------------------------------------!   
+!/10/             !Numero de sequencia do registro no lote inicia-!   
+!N  DO REGISTRO   !do sempre em 1.                                !   
+!DETALHE          !                                               !   
+!-----------------!-----------------------------------------------!   
+!/11/             !Ver - COMPOSICAO DO ARQUIVO.                   !   
+!COD. DE SEGMENTO !                                               !   
+!-----------------!-----------------------------------------------!   
+!/12/             !TIPO: Indica o tipo de movimentacao que se     !   
+!MOVIMENTO        !destina :                                      !   
+!                 !  0 - Indica INCLUSAO                          !   
+!                 !  3 -   "    ESTORNO                           !   
+!                 !  5 -   "    ALTERACAO                         !   
+!                 !  9 -   "    EXCLUSAO.                         !   
+!                 !CODIGO: Indica a movimentacao a ser efetuada,  !   
+!                 !conforme tabela:                               !   
+!                 !  00 - Inclusao de Registro Detalhe Liberado   !   
+!                 !  09 - Inclusao do Registro Detalhe Bloqueado  !   
+*-----------------------------------------------------------------*   
+*-----------------------------------------------------------------*   
+!    NOTAS        !   INFORMACOES COMPLEMENTARES                  !   
+!-----------------------------------------------------------------!   
+!/12/             !  10 - Alteracao  do  Pagamento  Liberado  para!   
+!MOVIMENTO /CONT./!       Bloqueado /Bloqueio/                    !   
+!                 !  11 - Alteracao  do  Pagamento  Bloqueado para!   
+!                 !       liberado /Liberacao/                    !   
+!                 !  17 - Alteracao do Valor do Titulo            !   
+!                 !  19 - Alteracao da Data de Pagamento          !   
+!                 !  23 - Pagamento Direto ao Fornecedor - Baixar !   
+!                 !  25 - Manutencao em Carteira - Nao Pagar      !   
+!                 !  27 - Retirada de Carteira - Nao Pagar        !   
+!                 !  33 - Estorno por Devolucao da Camara  Centra-!   
+!                 !       lizadora /somente para Movimento do tipo!   
+!                 !       3/                                      !   
+!                 !  40 - Alegacao do Sacado                      !   
+!                 !  99 - Exclusao do registro detalhe incluido   !   
+!                 !       anteriormente                           !   
+!-----------------!-----------------------------------------------!   
+!/13/             !BTN - Bonus do Tesouro Nacional + TR           !   
+!MOEDA            !BRL - Real                                     !   
+!                 !USD - Dolar Americano                          !   
+!                 !PTE - Escudo Portugues                         !   
+!                 !FRF - Franco Frances                           !   
+!                 !CHF - Franco Suico                             !   
+!                 !JPY - Ien Japones                              !   
+!                 !IGP - Indice Geral de Precos                   !   
+!-----------------!-----------------------------------------------!   
+!/13/             !IGM - Indice Geral de Precos de Mercado        !   
+!MOEDA            !GBP - Libra Esterlina                          !   
+!/cont./          !ITL - Lira Italiana                            !   
+!                 !DEM - Marco Alemao                             !   
+!                 !TRD - Taxa Referencial Diaria                  !   
+!                 !UPC - Unidade Padrao de Capital                !   
+!                 !UPF - Unidade Padrao de Financiamento          !   
+!                 !UFR - Unidade Fiscal de Referencia             !   
+!                 !XEU - Unidade Monetaria Europeia.              !   
+!                 !Obs.: Moeda baseada em tabela padrao S.W.I.F.T.!   
+!                 !acrescida dos principais indices nacionais.    !   
+!-----------------!-----------------------------------------------!   
+!/14/             !Campo utilizado no Retorno, para informacao das!   
+!OCORRENCIAS      !ocorrencias detectadas no processamento do ar- !   
+!                 !quivo Remessa, enviado pela empresa. Pode-se in!   
+!                 !formar ate 5 ocorrencias simultaneamente, cada !   
+!                 !uma codificada com dois digitos, cfe abaixo:   !   
+!                 !Codigos de Ocorrencia :                        !   
+!                 ! 00 - Credito ou Debito Efetuado               !   
+!                 ! 01 - Insuficiencia de Fundos - Debito Nao     !   
+!                 !      Efetuado                                 !   
+!                 ! 02 - Credito ou Debito Cancelado pelo         !   
+!                 !      Pagador/Credor                           !   
+!                 ! 03 - Debito Autorizado pela Agencia - Efetuado!   
+*-----------------------------------------------------------------*   
+*-----------------------------------------------------------------*   
+!    NOTAS        !   INFORMACOES COMPLEMENTARES                  !   
+!-----------------------------------------------------------------!   
+!/14/             ! HA - Lote Nao Aceito                          !   
+!OCORRENCIAS      ! HB - Inscricao da Empresa Invalida para o     !   
+!    /CONT./      !      Contrato                                 !   
+!                 ! HC - Convenio com a Empresa Inexistente/      !   
+!                 !      Invalido para o Contrato                 !   
+!                 ! HD - Agencia/Conta da Empresa Inexistente/    !   
+!                 !      Invalida para o Contrato                 !   
+!                 ! HE - Tipo de Servico Invalido para o Contrato !   
+!                 ! HF - Conta Corrente da Empresa com Saldo      !   
+!                 !      Insuficiente                             !   
+!                 ! HG - Lote de servico fora de sequencia        !   
+!                 ! HH - Lote de servico invalido                 !   
+!                 ! AA - Controle Invalido                        !   
+!                 ! AB - Tipo de Operacao Invalido                !   
+!                 ! AC - Tipo de Servico Invalido                 !   
+!                 ! AD - Forma de Lancamento Invalida             !   
+!                 ! AE - Tipo/Numero de Inscricao Invalido        !   
+!                 ! AF - Codigo de Convenio Invalido              !   
+!                 ! AG - Agencia/Conta Corrente/DV Invalido       !   
+!                 ! AH - N  Sequencial do Registro no Lote        !   
+!                 !      Invalido                                 !   
+!                 ! AI - Codigo de Segmento de Detalhe Invalido   !   
+!                 ! AJ - Tipo de Movimento Invalido               !   
+!                 ! AK - Codigo da Camara de Compensacao do Banco !   
+!                 !      do Favorecido Depositario Invalido       !   
+!                 ! AL - Codigo do Banco do Favorecido ou         !   
+!                 !      Depositario Invalido                     !   
+!                 ! AM - Agencia Mantenedora da Conta C/C do      !   
+!                 !      Favorecido Invalida                      !   
+!                 ! AN - Conta Corrente/DV do Favorecido Invalido !   
+!                 ! AO - Nome do Favorecido nao Informado         !   
+!                 ! AP - Data Lancamento Invalida                 !   
+!                 ! AQ - Tipo/Quantidade da Moeda Invalido        !   
+!                 ! AR - Valor do Lancamento Invalido             !   
+!                 ! AS - Aviso ao Favorecido - Identificacao      !   
+!                 !      Invalida                                 !   
+!                 ! AT - Tipo/NUmero de Inscricao do Favorecido   !   
+!                 !      Invalido                                 !   
+!                 ! AU - Logradouro do Favorecido nao Informado   !   
+!                 ! AV - N  do Local do Favorecido nao Informado  !   
+!                 ! AW - Cidade do Favorecido nao Informada       !   
+!                 ! AX - CEP/Complemento do Favorecido Invalido   !   
+!                 ! AY - Sigla do Estado do Favorecido Invalida   !   
+!                 ! AZ - Codigo/Nome do Banco Depositario Invalido!   
+!                 ! BA - Codigo/Nome da Agencia Depositaria nao   !   
+!                 !      Informado                                !   
+!                 ! BB - Seu NUmero Invalido                      !   
+!                 ! BC - Nosso NUmero Invalido                    !   
+*-----------------------------------------------------------------*   
+                                                                      
+*-----------------------------------------------------------------*   
+!    NOTAS        !   INFORMACOES COMPLEMENTARES                  !   
+!-----------------------------------------------------------------!   
+!/14/             ! BD - Confirmacao de Pagamento Agendado        !   
+!OCORRENCIAS      ! BE - CPF/CGC do creditado nao correspnde a    !   
+!/CONT./          !      agencia/conta informadas                 !   
+!                 ! CA - Codigo de barras - codigo do banco       !   
+!                 !      invalido                                 !   
+!                 ! CB - Codigo de barras - codigo da moeda       !   
+!                 !      invalido                                 !   
+!                 ! CC - Codigo de barras - digito verificador    !   
+!                 !      geral invalido                           !   
+!                 ! CD - Codigo de barras - valor do titulo       !   
+!                 !      invalido                                 !   
+!                 ! CE - Codigo de barras - campo livre invalido  !   
+!                 ! CF - Valor do documento invalido              !   
+!                 ! CG - Valor do abatimento invalido             !   
+!                 ! CH - Valor do desconto invalido               !   
+!                 ! CI - Valor de mora invalido                   !   
+!                 ! CJ - Valor da multa invalido                  !   
+!                 ! CK - Valor do IR invalido                     !   
+!                 ! CL - Valor do ISS invalido                    !   
+!                 ! CM - Valor do IOF invalido                    !   
+!                 ! CN - Valor de outras deducoes invalido        !   
+!                 ! CO - Valor de outros acrescimos invalido      !   
+!                 ! TA - Lote nao Aceito - Totais do Lote com     !   
+!                 !      Diferenca.                               !   
+!-----------------!-----------------------------------------------!   
+!/15/             !DEBITOS :                                      !   
+!CATEGORIA  DO    !  101 - Cheques                                !   
+!LANCAMENTO       !  102 - Encargos                               !   
+!                 !  103 - Estornos                               !   
+!                 !  104 - Lancamento Avisado                     !   
+!                 !  105 - Tarifas.                               !   
+!                 !CREDITOS :                                     !   
+!                 !  201 - Depositos                              !   
+!                 !  202 - Liquido de Cobranca                    !   
+!                 !  203 - Devolucao de Cheques                   !   
+!                 !  204 - Estornos                               !   
+!                 !  205 - Lancamento Avisado.                    !   
+!-----------------!-----------------------------------------------!   
+!/16/             !Campo de livre uso da empresa para o envio de  !   
+!INFORMACAO       !mensagem que devera constar nos  avisos e/ou   !   
+!                 !nos documentos a serem emitidos.               !   
+!                 !Informacao 1 - Generica. Quando informada,     !   
+!                 !constara em todos os avisos e/ou documentos    !   
+!                 !originados dos detalhes desse lote.            !   
+!                 !/Informada no Header de Lote/                  !   
+!                 !Informacao 2 - Especifica. Quando informada    !   
+!                 !constara apenas naquele aviso ou documento     !   
+!                 !identificado pelo detalhe.- Informada no Seg.A !   
+!                 !Informacao 3 - Especifica. Idem Informacao 2.  !   
+*-----------------------------------------------------------------*   
+*-----------------------------------------------------------------*   
+!    NOTAS        !   INFORMACOES COMPLEMENTARES                  !   
+!-----------------------------------------------------------------!   
+!/16/INFORMACAO   !/Informada no Segmento  M/                     !   
+!    /CONT./      !                                               !   
+!-----------------------------------------------------------------!   
+!/17/             !Evoluir um numero sequencial a cada Header de  !   
+!SEQUENCIA        !arquivo.                                       !   
+!-----------------!-----------------------------------------------!   
+!/18/             !Preencher com o codigo da Camara Centralizadora!   
+!CAMARA CENTRALI- !para transferencia do recurso  via  TED ou DOC,!   
+!ZADORA           !observando os seguintes dominios..             !   
+!                 !*018* = TED                                    !   
+!                 !*700* = DOC /COMPE/                            !   
+!                 !Obs... 1./ Se *em  branco*  ou  preenchido  com!   
+!                 !           *000*, o envio eh realizado via DOC.!   
+!                 !       2./ Apenas a informacao *018* nao garan-!   
+!                 !           te o envio via  TED,  devendo  serem!   
+!                 !           atendidas outras condicoes, tais co-!   
+!                 !           como horario-limite  para  liberacao!   
+!                 !           do arquivo-remessa  pela  agencia  e!   
+!                 !           valor minimo por operacao.          !   
+!-----------------!-----------------------------------------------!   
+!/19/             !As mensagens serao impressas em todos os       !   
+!MENSAGENS        !bloquetos referentes 1 e 2 ao mesmo lote. Estes!   
+!                 !campos nao serao utilizados no arquivo retorno.!   
+!-----------------!-----------------------------------------------!   
+!/20/             !01 - Entrada de Titulos.                       !   
+!CODIGOS DE MOVI- !02 - Pedido de Baixa.                          !   
+!MENTO PARA       !04 - Concessao de Abatimento.                  !   
+!REMESSA          !05 - Cancelamento de Abatimento.               !   
+!                 !06 - Alteracao de Vencimento.                  !   
+!                 !07 - Concessao de Desconto.                    !   
+!                 !08 - Cancelamento de Desconto.                 !   
+!                 !09 - Protestar.                                !   
+!                 !10 - Cancela/Sustacao da Instrucao de protesto !   
+!                 !30 - Recusa da Alegacao do Sacado.             !   
+!                 !31 - Alteracao de Outros Dados.                !   
+!                 !Obs.: Cada banco definira os  campos a serem   !   
+!                 !alterados para o codigo de movimento 31        !   
+!-----------------!-----------------------------------------------!   
+!/21/             !Codigo de movimento igual a '01' /entrada de   !   
+!NOSSO NUMERO     !titulos/, caso esteja preenchida com zeros, a  !   
+!                 !numeracao sera feita pelo banco.               !
+!                 !Nosso-Número com 11 posições: informar as onze !   
+!                 !posições mais o DV - Dígito Verificador.       !   
+!                 !Nosso-Número vinculado a convênios com sete    !   
+!                 !posições - faixa numérica acima de 1.000.000   !   
+!                 !(um milhão): informar o nosso-número sem DV  - !   
+!                 !Dígito Verificador. +                          !   
+!-----------------!-----------------------------------------------!   
+!/22/             !1 - Cobranca Simples.                          !   
+!CARTEIRA         !2 - Cobranca Vinculada.                        !   
+!                 !3 - Cobranca Caucionada.                       !   
+!                 !4 - Cobranca Descontada.                       !   
+!                 !7 - Cobranca Direta Especial /carteira 17/     !   
+*-----------------------------------------------------------------*   
+                                                                      
+                                                                      
+*-----------------------------------------------------------------*   
+!    NOTAS        !   INFORMACOES COMPLEMENTARES                  !   
+!-----------------------------------------------------------------!   
+!/23/             !1 - Banco emite.                               !   
+!EMISSAO DO BLO-  !2 - Cliente emite.                             !   
+!QUETO            !3 - Banco pre-emite e cliente complementa.     !   
+!                 !4 - Banco reemite.                             !   
+!                 !5 - Banco nao reemite.                         !   
+!                 !6 - Cobranca sem Papel.                        !   
+!                 !Obs.: Os codigos 4 e 5 so serao aceitos para   !   
+!                 !      codigo de movimento para remessa 31      !   
+!-----------------!-----------------------------------------------!   
+!/24/             !Numero utilizado pelo cliente para identifica- !   
+!NUMERO DO DOCU-  !cao do titulo.                                 !   
+!MENTO            !                                               !   
+!-----------------!-----------------------------------------------!   
+!/25/             !01 - CH  Cheque.                               !   
+!ESPECIE DOS      !02 - DM  Duplicata Mercantil.                  !   
+!TITULOS          !03 - DMI Duplicata Mercantil p/ Indicacao.     !   
+!                 !04 - DS  Duplicata de Servico.                 !   
+!                 !05 - DSI Duplicata de Servico p/ Indicacao.    !   
+!                 !06 - DR  Duplicata Rural.                      !   
+!                 !07 - LC  Letra de Cambio.                      !   
+!                 !08 - NCC Nota de Credito Comercial.            !   
+!                 !09 - NCE Nota de Credito A Exportacao.         !   
+!                 !10 - NCI Nota de Credito Industrial.           !   
+!                 !11 - NCR Nota de Credito Rural.                !   
+!                 !12 - NP  Nota Promissoria.                     !   
+!                 !13 - NPR Nota Promissoria Rural.               !   
+!                 !14 - TM  Triplicata Mercantil.                 !   
+!                 !15 - TS  Triplicata de Servico.                !   
+!                 !16 - NS  Nota de Seguro.                       !   
+!                 !17 - RC  Recibo.                               !   
+!                 !18 - FAT Fatura.                               !   
+!                 !19 - ND  Nota de Debito.                       !   
+!                 !20 - AP  Apolice de Seguro.                    !   
+!                 !21 - ME  Mensalidade Escolar                   !   
+!                 !22 - PC  Parcela de Consorcio                  !   
+!                 !99 - Outros                                    !   
+!-----------------!-----------------------------------------------!   
+!/26/             !1 - Valor por Dia;     2 - Taxa Mensal e       !   
+!CODIGO DE MORA   !3 - Isento                                     !   
+!-----------------!-----------------------------------------------!   
+!/27/             !Se invalida ou nao informada, sera assumida a  !   
+!DATA DO JUROS    !data do vencimento.                            !   
+!DE MORA          !                                               !   
+!-----------------!-----------------------------------------------!   
+!/28/             !1 - Valor Fixo ate a data informada.           !   
+!CODIGO DO DES-   !2 - Percentual ate a data informada.           !   
+!CONTO            !3 - Valor Por Antecipacao Dia Corrido.         !   
+!                 !4 - Valor Por Antecipacao Dia Util.            !   
+!                 !5 - Percentual sobre o Valor Nominal Dia       !   
+*-----------------------------------------------------------------*   
+*-----------------------------------------------------------------*   
+!    NOTAS        !   INFORMACOES COMPLEMENTARES                  !   
+!-----------------------------------------------------------------!   
+!/28/             !    Corrido.                                   !   
+!CODIGO DO DES-   !6 - Percentual sobre o Valor Nominal Dia Util. !   
+!CONTO /CONT./    !Obs.: Para os  codigos 1 e 2  sera obrigatorio !   
+!                 !a informacao da data.                          !   
+!-----------------!-----------------------------------------------!   
+!/29/             !01 - Reservado para uso futuro.                !   
+!CODIGO DA MOEDA  !02 - Dolar Americano Comercial /Venda/.        !   
+!                 !03 - Dolar Americano Turismo /Venda/.          !   
+!                 !04 - ITRD.                                     !   
+!                 !05 - IDTR.                                     !   
+!                 !06 - UFIR Diaria.                              !   
+!                 !07 - UFIR Mensal.                              !   
+!                 !08 - FAJ-TR.                                   !   
+!                 !09 - REAL.                                     !   
+!-----------------!-----------------------------------------------!   
+!/30/             !1 - CPF; 2 - CGC; 0 - Isento/Nao Informado e   !   
+!TIPO DE INSCRICAO!9 - Outros.                                    !   
+!NUMERO DE INCRI- !Se tipo de inscricao igual a zeros /nao        !   
+! CAO             !informado/, preencher com zeros                !   
+!-----------------!-----------------------------------------------!   
+!/31/             !Informacao obrigatoria quando se tratar de     !   
+!SACADOR/AVALISTA !titulo negociado com terceiros.                !   
+!-----------------------------------------------------------------!   
+!    NOTAS        !   INFORMACOES COMPLEMENTARES                  !   
+!-----------------------------------------------------------------!   
+!/32/             !Somente para troca de arquivos entre Bancos.   !   
+!USO DOS BANCOS   !                                               !   
+!-----------------!-----------------------------------------------!   
+!/33/             !Este campo so podera ser utilizado, caso haja  !   
+!INFORMACAO AO    !troca de arquivos magneticos entre o Banco e o !   
+!SACADO           !sacado.                                        !   
+!-----------------!-----------------------------------------------!   
+!/34/             !Mensagem livre a ser impressa no campo         !   
+!MENSAGENS 3   9  !instrucoes da ficha de compensacao do bloqueto.!   
+!                 !Obs.: As mensagens 3 e 4  prevalecem sobre as  !   
+!                 !mensagens 1 e 2.                               !   
+!                 !Obs.: Atualmente, utilizar somente o campo de  !   
+!                 !      mensagem 3, com, no maximo, 35 posicoes.     
+!-----------------!-----------------------------------------------!   
+!/35/             !1 - Frente do bloqueto.                        !   
+!CODIGO DE IDENTI-!2 - Verso do bloqueto.                         !   
+!FICACAO PARA IM- !3 - Campo de instrucoes da ficha de compensacao!   
+!PRESSAO DA MENSA-!    do bloqueto.                               !   
+!GEM              !8 - Bloqueto por e-mail                        !   
+!-----------------!-----------------------------------------------!   
+!/36/             !F - Frente : podera variar de "01"   "36".     !   
+!NUMERO DE LINHA  !V - Verso  : podera variar de "01"   "24".     !   
+!A SER IMPRESSA   !Zeros      : para envio de bloqueto por e-mail !   
+*-----------------------------------------------------------------*   
+                                                                      
+*-----------------------------------------------------------------*   
+!    NOTAS        !   INFORMACOES COMPLEMENTARES                  !   
+!-----------------------------------------------------------------!   
+!/37/             !Esta linha devera ser enviada no formato imagem!   
+!MENSAGEM A SER   !de impressao/tamanho maximo 140 posicoes/.     !   
+!IMPRESSA         !Para bloqueto por e-mail: os endereços de      !   
+!                 !e-mail deverão ser separados por ";" (ponto e  !   
+!                 !vírgula), sem espaços.                         !   
+!-----------------!-----------------------------------------------!   
+!/38/             !Somatoria dos registros do lote, incluindo     !   
+!QUANTIDADE DE RE-!Header e Trailer.                              !   
+!GISTRO DE LOTE   !                                               !   
+!-----------------!-----------------------------------------------!   
+!/39/             !Este campo nao sera utilizado para a cobranca. !   
+!FORMA DE LANCA-  !                                               !   
+!MENTO            !                                               !   
+!-----------------!-----------------------------------------------!   
+!/40/             !02 - Entrada confirmada.                       !   
+!CODIGOS DE MOVI- !03 - Entrada rejeitada.                        !   
+!MENTO PARA RETOR-!04 - Transferencia de carteira/entrada.        !   
+!NO               !05 - Transferencia de carteira/baixa.          !   
+!                 !06 - Liquidacao.                               !   
+!                 !09 - Baixa.                                    !   
+!                 !11 - Titulos em carteira /em ser/.             !   
+!                 !12 - Confirmacao recebimento instrucao de      !   
+!                 !     abatimento.                               !   
+!                 !13 - Confirmacao recebimento instrucao de      !   
+!                 !     cancelamento abatimento.                  !   
+!                 !14 - Confirmacao recebimento instrucao altera- !   
+!                 !     cao de vencimento.                        !   
+!                 !15 - Franco de pagamento.                      !   
+!                 !17 - Liquidacao apos baixa ou liquidacao titulo!   
+!                 !     nao registrado.                           !   
+!                 !19 - Confirmacao recebimento instrucao de      !   
+!                 !     protesto.                                 !   
+!                 !20 - Confirmacao recebimento instrucao de      !   
+!                 !     sustacao/cancelamento de protesto.        !   
+!                 !23 - Remessa a cartorio /aponte em cartorio/.  !   
+!                 !24 - Retirada de cartorio e manutencao em      !   
+!                 !     carteira.                                 !   
+!                 !25 - Protestado e baixado /baixa por ter sido  !   
+!                 !     protestado/.                              !   
+!                 !26 - Instrucao rejeitada.                      !   
+!                 !27 - Confirmacao do pedido de alteracao de     !   
+!                       outros dados.                             !   
+!                 !28 - Debito de tarifas/custas.                 !   
+!                 !29 - Ocorrencias do sacado.                    !   
+!                 !30 - Alteracao de dados rejeitada.             !   
+!                 !Obs.: Os codigos 03, 26 e 30 estao relacionados!   
+!                 !com a nota 42-a.                               !   
+!                 !O codigo 28 esta relacionado com a nota 42-b.  !   
+!                 !Os codigos 06, 09 e 17 estao relacionados com a!   
+!                 !nota 42-c.                                     !   
+*-----------------------------------------------------------------*   
+                                                                      
+*-----------------------------------------------------------------*   
+!    NOTAS        !   INFORMACOES COMPLEMENTARES                  !   
+!-----------------------------------------------------------------!   
+!/41/             !So serao utilizados para informacao do arquivo !   
+!TOTALIZACAO DA   !retorno                                        !   
+!COBRANCA         !                                               !   
+!-----------------!-----------------------------------------------!   
+!/42/             !42-A-Codigos de rejeicoes de 01 a 64 associados!   
+!REJEICOES DE RE- !ao codigo de movimento 03, 26 e 30 /nota 40/   !   
+!GISTRO DETALHE,  ! 01 - Codigo do banco invalido.                !   
+!CODIGOS DE TARI- ! 02 - Codigo do registro detalhe invalido.     !   
+!FAS/CUSTAS E     ! 03 - Codigo do segmento invalido.             !   
+!ORIGEM DA LIQUI- ! 04 - Codigo do movimento nao permitido para   !   
+!DACAO/BAIXA      !      carteira.                                !   
+!                 ! 05 - Codigo de movimento invalido.            !   
+!                 ! 06 - Tipo/nUmero de inscricao do cedente      !   
+!                 !      Invalidos.                               !   
+!                 ! 07 - Agencia/Conta/DV invalido.               !   
+!                 ! 08 - Nosso nUmero invalido.                   !   
+!                 ! 09 - Nosso nUmero duplicado.                  !   
+!                 ! 10 - Carteira invalida.                       !   
+!                 ! 11 - Forma de cadastramento do titulo invalido!   
+!                 ! 12 - Tipo de documento invalido.              !   
+!                 ! 13 - Identificacao da emissao do bloqueto     !   
+!                 !      invalida.                                !   
+!                 ! 14 - Identificacao da distribuicao do bloqueto!   
+!                 !      invalida.                                !   
+!                 ! 15 - Caracteristicas da cobranca incompativeis!   
+!                 ! 16 - Data de vencimento invalida.             !   
+!                 ! 17 - Data de vencimento anterior a data de    !   
+!                 !      emissao.                                 !   
+!                 ! 18 - Vencimento fora do prazo de operacao.    !   
+!                 ! 19 - Titulo a cargo de Bancos Correspondentes !   
+!                 !      com vencimento inferior   XX dias        !   
+!                 ! 20 - Valor do titulo invalido.                !   
+!                 ! 21 - Especie do titulo invalida.              !   
+!                 ! 22 - Especie nao permitida para a carteira.   !   
+!                 ! 23 - Aceite invalido.                         !   
+!                 ! 24 - Data da emissao invalida.                !   
+!                 ! 25 - Data da emissao posterior a data         !   
+!                 ! 26 - Codigo de juros de mora invalido.        !   
+!                 ! 27 - Valor/Taxa de juros de mora invalido.    !   
+!                 ! 28 - Codigo do desconto invalido.             !   
+!                 ! 29 - Valor do desconto maior ou igual ao valor!   
+!                 ! do titulo.                                    !   
+!                 ! 30 - Desconto a conceder nao confere.         !   
+!                 ! 31 - Concessao de desconto - ja existe        !   
+!                 !      desconto anterior.                       !   
+!                 ! 32 - Valor do IOF invalido.                   !   
+!                 ! 33 - Valor do abatimento invalido.            !   
+!                 ! 34 - Valor do abatimento maior ou igual ao    !   
+!                 !      valor do titulo.                         !   
+*-----------------------------------------------------------------*   
+*-----------------------------------------------------------------*   
+!    NOTAS        !   INFORMACOES COMPLEMENTARES                  !   
+!-----------------------------------------------------------------!   
+!/42/             ! 35 - Abatimento a conceder nao confere.       !   
+!REJEICOES DE RE- ! 36 - Concessao de abatimento - ja existe      !   
+!GISTRO DETALHE,  !      abatimento anterior.                     !   
+!CODIGOS DE TARI- ! 37 - Codigo para protesto invalido.           !   
+!FAS/CUSTAS E     ! 38 - Prazo para protesto invalido.            !   
+!ORIGEM DA LIQUI- ! 39 - Pedido de protesto nao permitido para o  !   
+!DACAO/BAIXA      !      titulo.                                  !   
+!/CONT./          ! 40 - Titulo com ordem de protesto emitida.    !   
+!                 ! 41 - Pedido de cancelamento/sustacao para     !   
+!                 !      titulos sem instrucao de protesto.       !   
+!                 ! 42 - Codigo para baixa/devolucao invalido.    !   
+!                 ! 43 - Prazo para baixa/devolucao invalido.     !   
+!                 ! 44 - Codigo da moeda invalido.                !   
+!                 ! 45 - Nome do sacado nao informado.            !   
+!                 ! 46 - Tipo/nUmero de inscricao do sacado       !   
+!                 !      invalidos.                               !   
+!                 ! 47 - Endereco do sacado nao informado.        !   
+!                 ! 48 - CEP invalido.                            !   
+!                 ! 49 - CEP sem praca de cobranca /nao localizado!   
+!                 ! 50 - CEP referente a um Banco Correspondente. !   
+!                 ! 51 - CEP incompativel com a unidade da        !   
+!                 !      federaCcao                               !   
+!                 ! 52 - Unidade da federacao invalida.           !   
+!                 ! 53 - Tipo/nUmero de inscricao do sacador/     !   
+!                 !      avalista invalidos.                      !   
+!                 ! 54 - Sacador/Avalista nao informado.          !   
+!                 ! 55 - Nosso nUmero no Banco Correspondente nao !   
+!                 !      informado.                               !   
+!                 ! 56 - Codigo do Banco Correspondente nao       !   
+!                 !      informado.                               !   
+!                 ! 57 - Codigo da multa invalido.                !   
+!                 ! 58 - Data da multa invalida.                  !   
+!                 ! 59 - Valor/Percentual da multa invalido.      !   
+!                 ! 60 - Movimento para titulo nao cadastrado.    !   
+!                 ! 61 - Alteracao da agencia cobradora/dv        !   
+!                 !      invalida.                                !   
+!                 ! 62 - Tipo de impressao invalido.              !   
+!                 ! 63 - Entrada para titulo ja cadastrado.       !   
+!                 ! 64 - Numero da linha invalido.                !   
+!                 ! 65 - Codigo do banco para debito invalido.    !   
+!                 ! 66 - Agencia/conta/DV para debito invalido.   !   
+!                 ! 67 - Dados para debito incompativel com a     !   
+!                 !      identificacao da emissao do bloqueto.    !   
+!                 ! 88 - Arquivo em duplicidade                   !   
+!                 ! 99 - Contrato inexistente.                    !   
+!                 !                                               !   
+!                 !Os códigos abaixo são exclusivos do bloqueto   !   
+!                 !por e-mail                                     !   
+!                 !46 - Documento de identificação do sacado invá-!   
+!                 !     lido - bloqueto será impresso.            !   
+!                 !47 - Endereço e-mail do sacado inválido - Blo- !   
+!                 !     queto será impresso.                      !   
+!                 !14 - Sacado optante por Cobrança Eletrônica -  !   
+!                 !     Bloqueto será eletrônico                  !   
+!                 !15 - Tipo de convênio não permite envio de     !   
+!                 !     e-mail - Bloqueto será impresso           !   
+!                 !15 - Modalidade de cobrança inválida para en-  !   
+!                 !     vio de e-mail - bloqueto será impresso.   !   
+!                 !13 - Cedente não autorizado a enviar e-mail -  !   
+!                 !     Bloqueto será impresso                    !   
+*-----------------------------------------------------------------*   
+                                                                      
+                                                                      
+                                                                      
+                                                                      
+*-----------------------------------------------------------------*   
+!    NOTAS        !   INFORMACOES COMPLEMENTARES                  !   
+!-----------------------------------------------------------------!   
+!                 !42-B - Codigos de tarifas/custas de 01 a 11    !   
+!                 !associados ao codigo de movimento 28. /nota 40/!   
+!                 ! 01 - Tarifa de extrato de posicao.            !   
+!                 ! 02 - Tarifa de manutencao de titulo vencido.  !   
+!                 ! 03 - Tarifa de sustacao.                      !   
+!                 ! 04 - Tarifa de protesto.                      !   
+!                 ! 05 - Tarifa de outras instrucoes.             !   
+!                 ! 06 - Tarifa de outras ocorrencias.            !   
+!                 ! 07 - Tarifa de envio de duplicata ao sacado.  !   
+!                 ! 08 - Custas de protesto.                      !   
+!                 ! 09 - Custas de sustacao de protesto.          !   
+!                 ! 10 - Custas do cartorio distribuidor.         !   
+!                 ! 11 - Custas de edital.                        !   
+!-----------------!-----------------------------------------------!   
+!                 !42-C - Codigos de liquidacao/baixa de 01 a 13  !   
+!                 !associados ao codigo de  movimento 06, 09 e 17 !   
+!                 !/nota 40/                                      !   
+!                 ! Liquidacao:                                   !   
+!                 !   01 - Por saldo.                             !   
+!                 !   02 - Por conta.                             !   
+!                 !   03 - No proprio banco.                      !   
+!                 !   04 - Compensacao eletronica.                !   
+!                 !   05 - Compensacao convencional.              !   
+!                 !   06 - Por meio eletronico.                   !   
+!                 !   07 - Apos feriado local.                    !   
+!                 !   08 - Em cartorio.                           !   
+!                 ! Baixa:                                        !   
+!                 !   09 - Comandada banco.                       !   
+!                 !   10 - Comandada cliente arquivo.             !   
+!                 !   11 - Comandada cliente on-line.             !   
+!                 !   12 - Decurso prazo - cliente.               !   
+!                 !   13 - Decurso prazo - banco.                 !   
+!-----------------!-----------------------------------------------!   
+!/43/             !Serah  informado o prefixo da Agencia do Banco !   
+!AGENCIA COBRADO- !recebedor.  Quando   este  prefixo  nao   for  !   
+!RA/RECEBEDORA    !informado, o campo serah preenchido com /ZERO/ !   
+!-----------------!-----------------------------------------------!   
+!/44/            !SIGNIFICADO           !COD.! DATA !VALOR!COMPLE-!   
+!OCORRENCIAS DO  !                      !    !      !     !MENTO  !   
+!SACADO          !----------------------!----!------!-----!-------!   
+!                !Sacado alega que nao  !0101!branco!zeros!brancos!   
+!                ! recebeu a mercadoria !    !      !     !       !   
+!                !----------------------!----!------!-----!-------!   
+!                !Sacado alega que merca!0102!branco!zeros!brancos!   
+!                !doria chegou atrasada !    !      !     !       !   
+!                !----------------------!----!------!-----!-------!   
+!                !Sacado alega que merca!0103!branco!zeros!brancos!   
+!                !chegou avariada       !    !      !     !       !   
+*-----------------------------------------------------------------*   
+                                                                      
+*-----------------------------------------------------------------*   
+!    NOTAS       !   INFORMACOES COMPLEMENTARES                   !   
+!-----------------------------------------------------------------!   
+!/44/            !SIGNIFICADO           !COD.! DATA !VALOR!COMPLE-!   
+!OCORRENCIAS DO  !                      !    !      !     !MENTO  !   
+!SACADO /CONT./  !----------------------!----!------!-----!-------!   
+!                !Sacado alega que merca!0104!branco!zeros!brancos!   
+!                !doria nao confere com !    !      !     !       !   
+!                !o pedido              !    !      !     !       !   
+!                !----------------------!----!------!-----!-------!   
+!                !Sacado alega que merca!0105!branco!zeros!brancos!   
+!                !doria chegou incomplet!    !      !     !       !   
+!                !----------------------!----!------!-----!-------!   
+!                !Sacado alega que merca!0106!branco!zeros!brancos!   
+!                !doria esta   disposi- !    !      !     !       !   
+!                !cao do cedente        !    !      !     !       !   
+!                !----------------------!----!------!-----!-------!   
+!                !Sacado alega que      !0107!branco!zeros!brancos!   
+!                !devolveu a mercadoria !    !      !     !       !   
+!                !----------------------!----!------!-----!-------!   
+!                !Sacado alega que merca!0108!branco!zeros!brancos!   
+!                !doria esta em desacor-!    !      !     !       !   
+!                !do com a Nota Fiscal  !    !      !     !       !   
+!                !----------------------!----!------!-----!-------!   
+!                !Sacado alega que nada !0109!branco!zeros!brancos!   
+!                !deve/comprou          !    !      !     !       !   
+!                !----------------------!----!------!-----!-------!   
+!                !Sacado alega que nao  !0201!branco!zeros!brancos!   
+!                !recebeu a fatura      !    !      !     !       !   
+!                !----------------------!----!------!-----!-------!   
+!                !Sacado alega que o    !0202!branco!zeros!brancos!   
+!                !pedido de compra foi  !    !      !     !       !   
+!                !cancelado             !    !      !     !       !   
+!                !----------------------!----!------!-----!-------!   
+!                !Sacado alega que a du-!0203!branco!zeros!brancos!   
+!                !plicata foi cancelada !    !      !     !       !   
+!                !----------------------!----!------!-----!-------!   
+!                !Sacado alega nao ter  !0204!branco!zeros!brancos!   
+!                !recebido mercadoria,  !    !      !     !       !   
+!                !nota fiscal e a fatura!    !      !     !       !   
+!                !----------------------!----!------!-----!-------!   
+!                !Sacado alega que a du-!0205!branco!zeros!brancos!   
+!                !plicata fatura esta   !    !      !     !       !   
+!                !incorreta             !    !      !     !       !   
+!                !----------------------!----!------!-----!-------!   
+!                !Sacado alega que o    !0206!branco!zeros!brancos!   
+!                !valor esta incorreto  !    !      !     !       !   
+!SACADO /CONT./  !----------------------!----!------!-----!-------!   
+!                !Sacado alega que o    !0207!branco!zeros!brancos!   
+!                !faturamento e indevido!    !      !     !       !   
+*-----------------------------------------------------------------*   
+                                                                      
+                                                                      
+*-----------------------------------------------------------------*   
+!    NOTAS       !   INFORMACOES COMPLEMENTARES                   !   
+!-----------------------------------------------------------------!   
+!/44/            !SIGNIFICADO           !COD.! DATA !VALOR!COMPLE-!   
+!OCORRENCIAS DO  !                      !    !      !     !MENTO  !   
+!SACADO /CONT./  !----------------------!----!------!-----!-------!   
+!                !Sacado alega que nao  !0208!branco!zeros!brancos!   
+!                !localizou o pedido de !    !      !     !       !   
+!                !compra                !    !      !     !       !   
+!                !----------------------!----!------!-----!-------!   
+!                !Sacado alega que o    !0301! DATA !zeros!brancos!   
+!                !vencimento correto e: !    !      !     !       !   
+!                !----------------------!----!------!-----!-------!   
+!                !Sacado solicita a     !0302! DATA !zeros!brancos!   
+!                !prorrogacao de venci- !    !      !     !       !   
+!                !mento para:           !    !      !     !       !   
+!                !Sacado aceita se venci!0303! DATA !zeros!brancos!   
+!                !mento prorrogado para:!    !      !     !       !   
+!                !----------------------!----!------!-----!-------!   
+!                !Sacado alega que paga-!0304! DATA !zeros!brancos!   
+!                !ra titulo em:         !    !      !     !       !   
+!                !----------------------!----!------!-----!-------!   
+!                !Sacado pagou o titulo !0305! DATA !zeros!brancos!   
+!                !ao cedente em:        !    !      !     !       !   
+!                !----------------------!----!------!-----!-------!   
+!                !Sacado pagara o titulo!0306! DATA !zeros!brancos!   
+!                !ao cedente em:        !    !      !     !       !   
+!                !----------------------!----!------!-----!-------!   
+!                !Sacado nao localizado,!0401!branco!zeros!brancos!   
+!                !confirmar o endereco  !    !      !     !       !   
+!                !----------------------!----!------!-----!-------!   
+!                !Sacado mudou-se, trans!0402!branco!zeros!brancos!   
+!                !feriu de domicilio    !    !      !     !       !   
+!                !----------------------!----!------!-----!-------!   
+!                !Sacado nao recebe no  !0403!branco!zeros!brancos!   
+!                !endereco indicado     !    !      !     !       !   
+!                !----------------------!----!------!-----!-------!   
+!                !Sacado desconhecido   !0404!branco!zeros!brancos!   
+!                !no local              !    !      !     !       !   
+!                !----------------------!----!------!-----!-------!   
+!                !Sacado reside fora do !0405!branco!zeros!brancos!   
+!                !perimetro             !    !      !     !       !   
+!                !----------------------!----!------!-----!-------!   
+!                !Sacado com endereco   !0406!branco!zeros!brancos!   
+!                !incompleto            !    !      !     !       !   
+!                !----------------------!----!------!-----!-------!   
+!                !Nao foi localizado o  !0407!branco!zeros!brancos!   
+!                !numero constante no   !    !      !     !       !   
+!                !endereco do titulo    !    !      !     !       !   
+!                !----------------------!----!------!-----!-------!   
+!                !Endereco nao localiza-!0408!branco!zeros!brancos!   
+!                !do/nao consta nos     !    !      !     !       !   
+*-----------------------------------------------------------------*   
+*-----------------------------------------------------------------*   
+!    NOTAS       !   INFORMACOES COMPLEMENTARES                   !   
+!-----------------------------------------------------------------!   
+!/44/            !SIGNIFICADO           !COD.! DATA !VALOR!COMPLE-!   
+!OCORRENCIAS DO  !                      !    !      !     !MENTO  !   
+!SACADO /CONT./  !----------------------!----!------!-----!-------!   
+!                !guias  da  cidade     !    !      !     !       !   
+!                !----------------------!----!------!-----!-------!   
+!                !Endereco do sacado    !0409!branco!zeros!nov end!   
+!                !alterado para:        !    !      !     !       !   
+!                !----------------------!----!------!-----!-------!   
+!                !Sacado alega ter des- !0501!branco!VALOR!brancos!   
+!                !conto ou abatimento de!    !      !     !       !   
+!                !----------------------!----!------!-----!-------!   
+!                !Sacado solicita descon!0502!branco!VALOR!brancos!   
+!                !to ou abatimento de:  !    !      !     !       !   
+!                !----------------------!----!------!-----!-------!   
+!                !Sacado solicita dispen!0503!branco!zeros!brancos!   
+!                !sa dos juros de mora  !    !      !     !       !   
+!                !----------------------!----!------!-----!-------!   
+!                !Sacado se recusa a    !0504!branco!zeros!brancos!   
+!                !pagar juros           !    !      !     !       !   
+!                !----------------------!----!------!-----!-------!   
+!                !Sacado se recusa a pa-!0505!branco!zeros!brancos!   
+!                !gar comissao de perma-!    !      !     !       !   
+!                !nencia                !    !      !     !       !   
+!                !----------------------!----!------!-----!-------!   
+!                !Sacado esta em regime !0601!branco!zeros!brancos!   
+!                !de concordata         !    !      !     !       !   
+!                !----------------------!----!------!-----!-------!   
+!                !Sacado esta em regime !0602!branco!zeros!brancos!   
+!                !de falencia           !    !      !     !       !   
+!                !----------------------!----!------!-----!-------!   
+!                !Sacado alega que man- !0603!branco!zeros!brancos!   
+!                !tem entendimentos com !    !      !     !       !   
+!                !o sacador             !    !      !     !       !   
+!                !----------------------!----!------!-----!-------!   
+!                !Sacado esta em entendi!0604!branco!zeros!brancos!   
+!                !mentos com o cedente  !    !      !     !       !   
+!                !----------------------!----!------!-----!-------!   
+!                !Sacado esta viajando  !0605!branco!zeros!brancos!   
+!                !----------------------!----!------!-----!-------!   
+!                !Sacado recusou-se a   !0606!branco!zeros!brancos!   
+!                !aceitar o titulo      !    !      !     !       !   
+!                !----------------------!----!------!-----!-------!   
+!                !Sacado sustou protesto!0607!branco!zeros!brancos!   
+!                !judicialmente         !    !      !     !       !   
+!                !----------------------!----!------!-----!-------!   
+!                !Empregado recusou-se a!0608!branco!zeros!brancos!   
+!                !receber o titulo      !    !      !     !       !   
+!SACADO /CONT./  !----------------------!----!------!-----!-------!   
+!                !Titulo reapresentado  !0609!branco!zeros!brancos!   
+*-----------------------------------------------------------------*   
+*-----------------------------------------------------------------*   
+!    NOTAS       !   INFORMACOES COMPLEMENTARES                   !   
+!-----------------------------------------------------------------!   
+!/44/            !SIGNIFICADO           !COD.! DATA !VALOR!COMPLE-!   
+!OCORRENCIAS DO  !                      !    !      !     !MENTO  !   
+!SACADO /CONT./  !----------------------!----!------!-----!-------!   
+!                !ao sacado             !    !      !     !       !   
+!                !----------------------!----!------!-----!-------!   
+!                !Estamos nos dirigindo !0610!branco!zeros!brancos!   
+!                !ao nosso correspondent!    !      !     !       !   
+!                !----------------------!----!------!-----!-------!   
+!                !Correspondente nao se !0611!branco!zeros!brancos!   
+!                !interessa pelo protest!    !      !     !       !   
+!                !----------------------!----!------!-----!-------!   
+!                !Sacado nao atende aos !0612!branco!zeros!brancos!   
+!                !avisos de nossos      !    !      !     !       !   
+!                !correspondentes       !    !      !     !       !   
+!                !----------------------!----!------!-----!-------!   
+!                !Titulo esta sendo     !0613!branco!zeros!brancos!   
+!                !encaminhado ao corres-!    !      !     !       !   
+!                !pondente              !    !      !     !       !   
+!                !----------------------!----!------!-----!-------!   
+!                !Entrega franco de paga!0614!branco!zeros!brancos!   
+!                !mento ao sacado       !    !      !     !       !   
+!                !----------------------!----!------!-----!-------!   
+!                !Entrega franco de paga!0615!branco!zeros!brancos!   
+!                !mento ao representante!    !      !     !       !   
+!                !----------------------!----!------!-----!-------!   
+!                !A entrega franco de   !0616!branco!zeros!brancos!   
+!                !pagamento e dificil   !    !      !     !       !   
+!                !----------------------!----!------!-----!-------!   
+!                !Titulo recusado pelo  !0617!branco!zeros!mot.rec!   
+!                !cartorio:             !    !      !     !       !   
+!                !OBS.: Somente serao informadas o codigo de      !   
+!                !movimento 29.                                   !   
+!                !O campo complemento podera ser utilizado de     !   
+!                !acordo com a estrutura de cada banco.           !   
+!-----------------------------------------------------------------!   
+!/45/            !Identifica o N  da Versao do Layout do Lote,    !   
+!LEIAUTE DO LOTE !composto de :                                   !   
+!                ! Versao  - 2 digitos                            !   
+!                ! Release - 1 digito.                            !   
+!                !Obs.: Somente podera ser modificado quando  hou-!   
+!                !      alteracao nos lotes de servico e desde que!   
+!                !      aprovadas pelo CNAB                       !   
+!----------------!------------------------------------------------!   
+!/46/            !Para uso futuro da Caracteristica da Cobranca.  !   
+!CNAB            !                                                !   
+!-----------------------------------------------------------------!   
+!/47/            !Formato do caracter a ser impresso.             !   
+!TIPO DE FONTE   ! 01 - Normal                                    !   
+!                ! 02 - Italico                                   !   
+*-----------------------------------------------------------------*   
+*-----------------------------------------------------------------*   
+!    NOTAS       !   INFORMACOES COMPLEMENTARES                   !   
+!-----------------------------------------------------------------!   
+!/47/            ! 03 - Normal negrito                            !   
+!TIPO DE FONTE   ! 04 - Italico negrito                           !   
+!     /CONT./    !                                                !   
+!----------------!------------------------------------------------!   
+!/48/            !A vista             - preencher com 11111111    !   
+!VENCIMENTO      !Contra-apresentacao - preencher com 99999999    !   
+!                !Obs.: O prazo legal para vencimento "a vista"   !   
+!                !ou "contra-apresentacao" e de 15 dias da data do!   
+!                !registro no banco                               !   
+!----------------!------------------------------------------------!   
+!/49/            !Informacao opcional - na ausencia sera atribuida!   
+!AGENCIA COBRA-  !pelo CEP.                                       !   
+!DORA            !                                                !   
+!----------------!------------------------------------------------!   
+!/50/            !Ocorrencias especificas para o servico cobranca !   
+!OCORRENCIAS     !sem papel.                                      !   
+!                ! Codigos de Ocorrencia :                        !   
+!                !  HA - Lote Nao Aceito                          !   
+!                !  AA - Controle Invalido                        !   
+!                !  AB - Tipo de Operacao Invalido                !   
+!                !  AC - Tipo de Servico Invalido                 !   
+!                !  AE - Tipo/NUmero de Inscricao do Cedente      !   
+!                !       Invalido                                 !   
+!                !  AG - Agencia/Conta Corrente/DV do Sacado      !   
+!                !       Invalido                                 !   
+!                !  AH - N  Sequencial do Registro no Lote        !   
+!                !       Invalido                                 !   
+!                !  AI - Codigo de Segmento de Detalhe Invalido   !   
+!                !  AL - Codigo do Banco do Sacado Invalido       !   
+!                !  AO - Nome do Cedente nao Informado            !   
+!                !  AP - Data para o debito Invalida              !   
+!                !  AR - Valor do Lancamento para Debito Invalido !   
+!                !  AT - Tipo/NUmero de Inscricao do Sacado       !   
+!                !       Invalido                                 !   
+!                !  BF - Codigo de Barras Invalido                !   
+!                !  BG - Codigo do Banco Remetente Invalido       !   
+!                !  BH - Remessa de debito para agendamento em    !   
+!                !       duplicidade /codigo de barras/data de    !   
+!                !       vencimento existentes/                   !   
+!                !  BI - Retirada de debito para agendamento      !   
+!                !       inexistente/codigo de barras             !   
+!                !       inexistente/                             !   
+!                !  BJ - Recusa do debito pelo banco sacado       !   
+!                !  BK - Contra ordem do debito pelo sacado       !   
+!                !  BL - Conta corrente para debito encerrada     !   
+!                !  BM - Conta corrente para debito bloqueada     !   
+!                !  TA - Lote nao Aceito - Totais do Lote com     !   
+!                !       Diferenca.                               !   
+*-----------------------------------------------------------------*   
+                                                                      
+*-----------------------------------------------------------------*   
+!    NOTAS       !   INFORMACOES COMPLEMENTARES                   !   
+!-----------------------------------------------------------------!   
+!/51/            !01 - Remessa para debito                        !   
+!CODIGO DE MOVI- !02 - Retirada de debito                         !   
+!MENTO           !03 - Remessa para debito rejeitada              !   
+!                !04 - Retirada de debito rejeitada               !   
+!----------------!------------------------------------------------!   
+!/52/            !Indica o tipo de servico que o arquivo contem : !   
+!TIPO DE SERVICO !   '02' - Cobranca sem Papel                    !   
+!                !Obs.: Este campo so devera ser utilizado para a !   
+!                !cobranca sem papel.                             !   
+!----------------!------------------------------------------------!   
+!/53/            !Ocorrencias especificas para o arquivo com lote !   
+!OCORRENCIAS CO- !de servico cobranca sem papel:                  !   
+!BRANCA SEM PAPEL!01- Controle do registro header invalido        !   
+!                !02- Codigo de remessa diferente de "1"          !   
+!                !03- Data de geracao invalida ou diferente de D+0!   
+!                !04- Numero sequencial do arq.nao numerico ou    !   
+!                !    fora de sequencia                           !   
+!                !05- Numero da versao do layout do arquivo       !   
+!                !    invalido                                    !   
+!                !06- Tipo de servico diferente de "02"           !   
+!                !07- Controle do registro trailer invalido       !   
+!                !08- Arquivo nao aceito - Totais do arquivo com  !   
+!                !    diferenca                                   !   
+!----------------!------------------------------------------------!   
+!/54/            !Devera conter o/s/ codigos/s/ da ocorrencia do  !   
+!CODIGO DA OCOR- !sacado /NOTA 44/ a/s/ qual/is/ o cedente nao    !   
+!RENCIA DO SACADO!concorda. Somente sera utilizado para o codigo  !   
+!                !de movimento 30 /NOTA 20/.                      !   
+!----------------!------------------------------------------------!   
+!/55/            ! posicoes   picture                             !   
+!USO EXCLUSIVO   !235 a 235  9/01/                                !   
+!DA FEBRABAN/CNAB! codigo da carteira anterior. Especifico para   !   
+!                !tipo de movimento 4 - transferencia de          !   
+!                !carteira/entrada, para titulos das carteiras    !   
+!                !11 e 17. Conteudo como no campo 58 a 58         !   
+!-----------------------------------------------------------------!   
+!  INFORMACOES COMPLEMENTARES                                     !   
+!-----------------------------------------------------------------!   
+!  OBSERVACOES GERAIS PARA TITULOS EM CARTEIRA DE COBRANCA        !   
+!-----------------------------------------------------------------!   
+!  O controle entre um  grupo de  segmentos  para um mesmo titulo,!   
+!  sera pelos campos 'codigo de movimento' e 'numero do registro" !   
+!-----------------------------------------------------------------!   
+!  Campos numericos nao utilizados     : preencher com zeros.     !   
+!-----------------------------------------------------------------!   
+!  Campos alfanumericos nao utilizados : preencher com brancos    !   
+!-----------------------------------------------------------------!   
+!  Os campos referentes as taxas/percentuais deverao ser preen-   !   
+!  chidos com duas casas decimais e serao impressos no bloqueto   !   
+*-----------------------------------------------------------------*   
+*-----------------------------------------------------------------*   
+!  INFORMACOES COMPLEMENTARES                                     !   
+!-----------------------------------------------------------------!   
+!  OBSERVACOES GERAIS PARA TITULOS EM CARTEIRA DE COBRANCA /CONT./!   
+!-----------------------------------------------------------------!   
+!  em valor da moeda corrente ou quantidade /para moeda variavel/.!   
+!-----------------------------------------------------------------!   
+!  Rejeicoes do arquivo :                                         !   
+!    - Codigo do banco invalido                                   !   
+!    - Codigo de servico invalido                                 !   
+!    - Codigo do convenio invalido                                !   
+!    - Codigo da agencia/conta invalido                           !   
+!    - Codigo do nUmero de remessa invalida                       !   
+!    - NUmero sequencial do registro dentro do arquivo invalido   !   
+!    - Quantidade de registros do lote invalido ou divergente.    !   
+!-----------------------------------------------------------------!   
+!  Sugestao para impressao nos bloquetos : /instrucoes de recebi- !   
+!  mento/                                                         !   
+!  - Ate dd/mm/aaaa desconto de zzzzzzz.zzz.zz9,99                !   
+!  - Apos dd/mm/aaaa juros dia de zzzzzzzzz.zz9,99                !   
+!  - Apos dd/mm/aaaa multa de z.zzz.zzz.zzz.zz9,99                !   
+!  - Conceder abatimento de z.zzz.zzz.zzz.zz9,99                  !   
+!  - Desc. zzzzzzz.zzz.zz9,99 p/dia corrido antec.                !   
+!  - Desc. zzzzzzz.zzz.zz9,99 p/dia util    antec.                !   
+!-----------------------------------------------------------------!   
+!                                                                 !   
+!  Utilizacao dos segmentos 'P' a 'U'.                            !   
+!  - O segmento 'P' e obrigatorio.                                !   
+!  - O segmento 'Q' e obrigatorio somente para o codigo de movi-  !   
+!    mento '01'/entrada de titulos/.                              !   
+!  - O segmento 'R' e opcional.                                   !   
+!  - O segmento 'S' so sera utilizado paraa mensagens nos bloque- !   
+!    tos.                                                         !   
+!  - O segmento 'T' e obrigatorio.                                !   
+!  - O segmento 'U' e obrigatorio.                                !   
+!  - Utilizacao de moeda variavel:                                !   
+!    - todos os valores deverao estar na mesma moeda e a edicao   !   
+!      terah 5 /cinco/ casas decimais.                            !   
+*------------------------------------------------------------------*  
+
+

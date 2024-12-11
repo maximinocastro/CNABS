@@ -1,0 +1,62 @@
+Codigo Registro00100100                                                           
+Codigo Remessa 00200201                                                           
+Literal Remessa0030090'REMESSA'                                                   
+Codigo Servico 010011001                                                          
+Literal Servico0120260'COBRANCA'                                                  
+Agencia cedente0270310STRZERO(VAL(SEE->EE_AGENCIA),5,0)                           
+SubConta       0320330SEE->EE_SUBCTA                                              
+Conta          0340440'04093457696'                                               
+Brancos        0450460                                                            
+Nome           0470760'PEUGEOT DO BRASIL AUTOM LTDA'                              
+Codigo Banco   0770790"399"                                                       
+Nome Banco     0800940'BAMERINDUS'                                                
+Data Gravacao  0951000GravaData(dDataBase,.F.)                                    
+Densidade      1011050'01600'                                                     
+Literal Densid 1061080'BPI'                                                       
+Brancos        1093940                                                            
+Numero Sequenc.3954000'000001'                                                    
+Codigo Registro00100101                                                           
+Codigo Inscr   002003002                                                          
+Numero Inscr   0040170'67936752000173'                                            
+Agencia        0180220STRZERO(VAL(SEE->EE_AGENCIA),5,0)                           
+SubConta       0230240SEE->EE_SUBCTA                                              
+Conta          0250350'04093457696'                                               
+Brancos        0360370                                                            
+Controle Partic0380620SE1->E1_TIPO+SE1->E1_NUM+SE1->E1_PARCELA                    
+Nosso Numero   0630730ExecBlock("MODULO11")                                       
+Desconto data-20740790REPLICATE("0",6)                                            
+Valor Desc-2   0800902REPLICATE("0",11)                                           
+Desconto data-30910960REPLICATE("0",6)                                            
+Valor Desc-3   0971072REPLICATE("0",11)                                           
+Carteira       10810801                                                           
+Codigo Ocorrenc1091100IF(SE1->E1_OCORREN='  ',01,SE1->E1_OCORREN)                 
+Seu Numero     1111200SE1->E1_PREFIXO+SE1->E1_NUM+SE1->E1_PARCELA                 
+Vencimento     1211260SE1->E1_VENCTO                                              
+Valor          1271395STRZERO(SE1->E1_VALOR*100000,13,0)                          
+Banco Cobrador 1401420'399'                                                       
+Ag.Depositaria 1431470'00000'                                                     
+Especie Titulo 148149008                                                          
+Aceite         1501500'A'                                                         
+Data Emissao   1511560SE1->E1_EMISSAO                                             
+Instrucao 01   1571580IIF(EMPTY(SE1->E1_INSTR1),01,SE1->E1_INSTR1)                
+Instrucao 02   1591600IIF(EMPTY(SE1->E1_INSTR2),04,SE1->E1_INSTR2)                
+Juros          1611736STRZERO(SE1->E1_VALJUR*1000000,13,0)                        
+Desconto data  1741790REPLICATE("0",6)                                            
+Valor desconto 1801922REPLICATE("0",13)                                           
+Valor IOF      1932052REPLICATE("0",13)                                           
+Abatimento     2062182REPLICATE("0",13)                                           
+Cod.Inscricao  2192200IIF(SA1->A1_TIPO="F",01,02)                                 
+Num.Inscricao  2212340STRZERO(VAL(SA1->A1_CGC),14,0)                              
+Nome do Sacado 2352740SA1->A1_NOME                                                
+Endereco Sacado2753140SA1->A1_ENDCOB                                              
+Bairro Sacado  3153260SA1->A1_COMCOB                                              
+CEP            3273340SA1->A1_CEPCOB                                              
+Cidade Sacado  3353490SA1->A1_MUNCOB                                              
+Estado Sacado  3503510SA1->A1_ESTCOB                                              
+Sacador/Avalist3523910                                                            
+Praza de Protes3923930                                                            
+Tipo/Moeda     39439402                                                           
+Num Sequencial 3954000incrementa()                                                
+Codigo Registro00100109                                                           
+Brancos        0023940                                                            
+Numero Sequenc 3954000Incrementa()                                                

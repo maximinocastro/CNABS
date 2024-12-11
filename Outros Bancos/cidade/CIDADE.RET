@@ -1,0 +1,14 @@
+Codigo do Banco077079 415                                                         
+Numero Titulo  117126 SE1->E1_NUM                                                 
+Data Ocorrencia111116 DATE()                                                      
+Vlr Desp Cobr.                                                                    
+Vlr Desconto   241253                                                             
+Vlr Abatimento 228240                                                             
+Vlr Principal  153165 SE1->E1_VALOR                                               
+Valor Juros    267279                                                             
+Valor Multa                                                                       
+Cod Ocorrencia 109110 EB->EB_OCORR                                                
+Esp‚cie        174175 STRZERO(SE1->E1_TIPO,2,0)                                   
+Valor IOF                                                                         
+Outros Cr‚ditos280292                                                             
+Data Cr‚dito   296301 E1_BAIXA                                                    

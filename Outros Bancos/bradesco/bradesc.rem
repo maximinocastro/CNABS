@@ -1,0 +1,53 @@
+Ident. Registro00100100                                                           
+Ident. Fita Rem00200201                                                           
+Literal Remessa0030090'REMESSA'                                                   
+Cod. Servico   010011001                                                          
+Literal Servico0120260'COBRANCA'                                                  
+Codigo Empresa 0270460strzero(val(see->ee_codemp),20)                             
+Nome da Empresa0470760upper(SUBS(SM0->M0_NOMECOM,7,99))                           
+Numero do Banco0770790237                                                         
+Nome do Banco  0800940'BRADESCO'                                                  
+Data da Gravaca0951000gravadata(ddatabase,.F.)                                    
+branco         1011080                                                            
+Ident. Sistema 1091100'MX'                                                        
+N§ Remessa     1111170STRZERO(VAL(SEE->EE_ULTDSK),7)                              
+Branco         1183940                                                            
+Numero Sequenci3954000000001                                                      
+Ident. Registro00100101                                                           
+Tipo Inscricao 002003002                                                          
+Numero Inscrica0040170SM0->M0_CGC                                                 
+Ident. Empresa 0180290"00000090"+SA6->A6_AGENCIA+SUBS(SA6->A6_NUMCON,2,8)         
+DIGTO DA C/C   0300370SUBS(SA6->A6_NUMCON,2,7)+SUBS(SA6->A6_NUMCON,10,1)          
+N§ Controle Tit0380620se1->e1_prefixo+se1->e1_num+se1->e1_parcela                 
+Zeros          063070000000000                                                    
+Ident. Titulo  0710820SUBS(SE1->E1_NOSSONU,2,11)+SUBS(SE1->E1_NOSSONU,14,1)       
+Desconto       08309200000000000                                                  
+Operacao       0931070                                                            
+Carteira Banco 10810809                                                           
+Ocorrencia     1091100se1->e1_ocorren                                             
+Num Duplicata  1111200se1->e1_prefixo+se1->e1_num+se1->e1_parcela                 
+Data do Vencto 1211260gravadata(se1->e1_vencrea,.f.)                              
+Valor Titulo   1271390STRZERO(INT(SE1->E1_valor*100),13)                          
+Banco Cobranca 1401420237                                                         
+Agencia Cobranc143147000000                                                       
+Especie do Titu148149001                                                          
+Identificacao  1501500'N'                                                         
+Data Emissao ti1511560GRAVADATA(SE1->E1_EMISSAO,.F.)                              
+1a. Instrucao  157158000                                                          
+2a. Instrucao  159160000                                                          
+Vlr. Atraso Dia1611730STRZERO(INT(SE1->E1_VALJUR*100),13)                         
+Data Lim. Desc.1741790000000                                                      
+Vlr Desconto   18019200000000000000                                               
+Vlr IOF        193205000000000000                                                 
+Vlr Abatimento 2062180STRZERO(INT(SE1->E1_DESCONT*100),13)                        
+Tipo Inscricao 219220002                                                          
+Numero Inscrica2212340SA1->A1_CGC                                                 
+Nome Sacado    2352740SUBSTR(SA1->A1_NOME,1,40)                                   
+Endereco Sacado2753140SUBSTR(SA1->A1_END,1,40)                                    
+Bairro         3153260SUBS(SA1->A1_BAIRRO,1,12)                                   
+CEP            3273340SUBSTR(SA1->A1_CEP,1,8)                                     
+Mensagem       3353940                                                            
+Numero Sequenci3954000INCREMENTA()                                                
+Ident. Registro00100109                                                           
+Branco         0023940                                                            
+Sequencial     3954000incrementa()                                                

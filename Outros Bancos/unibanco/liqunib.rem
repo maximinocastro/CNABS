@@ -1,0 +1,51 @@
+REGISTRO       001001 "0"                                                         
+REMESSA        002002 "1"                                                         
+LIT REMESSA    003009 "REMESSA"                                                   
+IDENT SERVICO  010011 "08"                                                        
+LIT SERVICO    012025 "CONTAS A PAGAR"                                            
+AG CLIENTE     026029 "1234"                                                      
+CONTA CLIENTE  030035 "123456"                                                    
+DIG CONTA      036036 "1"                                                         
+NOME DO CLIENTE037066 SUBS(SM0->M0_NOMECOM,1,30)                                  
+NR BANCO       067069 "409"                                                       
+NOME BANCO     070084 "UNIBANCO      "                                            
+DT GRAVACAO    085090 GRAVADATA(DDATABASE,.F.,2)                                  
+RESERVADO      091314 SPACE(224)                                                  
+SEQUENCIAL     315320 '000001'                                                    
+REMESSA        001001 "2"                                                         
+AG CLIENTE     002005 1234                                                        
+NR CONTA CLIEN 006011 123456                                                      
+DIG CONTA C    012012 1                                                           
+RESERVADO      013032 SPACE(20)                                                   
+NR BANCO FAVOR 033036 "0"+SUBS(SRA->RA_BCDEPSA,1,3)                               
+AG FAVORECIDO  037040 SUBS(SRA->RA_BCDEPSA,4,4)                                   
+CONTA FAVOREC  041050 SUBS(SRA->RA_CTDEPSA,1,7)+"   "                             
+REPASSE        051051 '4'                                                         
+AVISO          052052 '0'                                                         
+TIPO           053053 '5'                                                         
+TIPO SERVICO   054054 '1'                                                         
+VALOR          055067 nValor                                                      
+ID FAVORECIDO  068082 000000000000000                                             
+DT GRAVACAO    083088 GRAVADATA(DDATABASE,.F.,2)                                  
+DT CREDITO     089094 GRAVADATA(DDATAPGTO,.F.,2)                                  
+NOME FAVORECIDO095124 SUBS(SRA->RA_NOME,1,30)                                     
+RESERVADO      125219 SPACE(95)                                                   
+HIST LANCTO.   220234 SPACE(15)                                                   
+MOEDA          235236 '14'                                                        
+RESERVADO 1    237247 SPACE(11)                                                   
+NR PAGTO       248258 00000000000                                                 
+OCORRENCIA     259260 '01'                                                        
+MESMA TITULARID261261 '0'                                                         
+RESERVADO 2    262262 SPACE(1)                                                    
+AMARRACAO      263280 (((VAL(SRA->RA_BCDEPSA)+VAL(SRA->RA_CTDEPSA))+nvalor)*5)    
+RESERVADO 3    281306 SPACE(26)                                                   
+HIST C/C       307311 '00000'                                                     
+RESERVADO 4    312313 SPACE(2)                                                    
+DIGITO C/C     314314 RIGHT(SRA->RA_CTDEPSA,1)                                    
+SEQUENCIAL     315320 INCREMENTA()                                                
+REGISTRO       001001 '9'                                                         
+QTDE FUNC.     002007 NTOTFUNC                                                    
+VALOR          008020 NTOTAL                                                      
+QTDE REG       021026 NTOTFUNC+2                                                  
+RESERVADO      027314 SPACE(288)                                                  
+SEQUENCIAL     315320 INCREMENTA()                                                

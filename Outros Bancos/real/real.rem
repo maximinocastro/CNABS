@@ -1,0 +1,74 @@
+Codigo Registro00100100                                                           
+Constante 01   00200201                                                           
+Constante 02   0030090"REMESSA"                                                   
+Constante 03   010011001                                                          
+Constante 04   0120260"COBRANCA"                                                  
+Zero           02702700                                                           
+Ag. Cedente    02803100521                                                        
+Zero           03203200                                                           
+Conta Cedente  03303901004001                                                     
+Brancos        0400460SPACE(7)                                                    
+Nome Cedente   0470760ALLTRIM(SUBS(SM0->M0_NOMECOM,1,30))                         
+Ident. Banco   0770790275                                                         
+Nome do Banco  0800940"BANCO REAL"                                                
+Dt. Precess.   0951000GRAVADATA(DATE(),.F.)                                       
+Constante      1011080"01600BPI"                                                  
+Brancos        1093940SPACE(286)                                                  
+Nr. Sequencia  3954000000001                                                      
+Codigo Registro00100101                                                           
+Cod. Inscricao 002003002                                                          
+Incric. Empresa0040110SUBS(SM0->M0_CGC,1,8)                                       
+Filial         0120150SUBS(SM0->M0_CGC,9,4)                                       
+Controle       0160170SUBS(SM0->M0_CGC,13,2)                                      
+Zero           01801800                                                           
+Ag. Cedente    01902200521                                                        
+Zero           02302300                                                           
+Conta Cedente  02403001004001                                                     
+Brancos        0310370SPACE(7)                                                    
+Campo Expecial 0380620                                                            
+Zeros          063064000                                                          
+Nr.Titulo Banco0650710SE1->E1_PREFIXO+SE1->E1_NUM+SE1->E1_PARCELA                 
+Inciden. Multa 07207200                                                           
+Nr.dias Multa  073074000                                                          
+Tipo de Multa  07507500                                                           
+Multa          0760880STRZERO((ROUND(SE1->E1_VALJUR,2) * 100),13)                 
+Brancos        0890950SPACE(07)                                                   
+Contrato       0961040307934507                                                   
+Brancos        1051070SPACE(3)                                                    
+Carteira       10810805                                                           
+Cod. Ocorrencia109110001                                                          
+Nr.Tit. Cedente1111202SE1->E1_PREFIXO+SE1->E1_NUM+SE1->E1_PARCELA                 
+Dt. Vcto Titulo121126 GRAVADATA(SE1->E1_VENCTO)                                   
+Valor Titulo   1271390STRZERO((ROUND(SE1->E1_SALDO,2) * 100),13)                  
+Ident. Banco   1401420275                                                         
+Ag. Cobradora  14314700521                                                        
+Expecie Titulo 148149001                                                          
+Aceite         1501500"N"                                                         
+Data Emissao   1511560GRAVADATA(SE1->E1_EMISSAO)                                  
+Cod. Protesto  157158005                                                          
+Brancos        1591600SPACE(2)                                                    
+Tipo de Juros  161161 "0"                                                         
+Juro Mora      162173 STRZERO((ROUND(SE1->E1_VALJUR,2) * 100),13)                 
+Dt Limite Desc.1741790IIF(SE1->E1_DESCONT=0,'000000',E1->E1_VENCTO)               
+Valor Desconto 1801920STRZERO((ROUND(SE1->E1_DESCONT,2) * 100),13)                
+I.O.C          1932050                                                            
+Abatimento     2062182"0000000000000"                                             
+Cod Insc Sacado2192200IIF(LEN(SA1->A1_CGC)=14,"02","01")                          
+CPF Sacado     221229 EXECBLOCK("CNPJ_REAL",.F.,.F.)                              
+Zeros          2302320EXECBLOCK("CNPJFILIAL_REAL",.F.,.F.)                        
+Controle       233234 IIF(EMPTY(SA1->A1_CGC),"00",SUBS(SA1->A1_CGC,-2) )          
+Nome Sacado    2352740SUBS(SA1->A1_NOME,1,40)                                     
+End. Sacado    2753140SUBS(SA1->A1_END,1,40)                                      
+Bairro         3153260SUBS(SA1->A1_BAIRRO,1,12)                                   
+CEP            3273340SA1->A1_CEP                                                 
+Cidade         3353490SUBS(SA1->A1_MUN,1,15)                                      
+Estado         3503510SA1->A1_EST                                                 
+Nome Sacador   352391 SUBS(SA1->A1_NOME,1,40)                                     
+Valor / Moeda  39239200                                                           
+Tipo/Moeda     393394007                                                          
+Nr Sequencia   3954000INCREMENTA()                                                
+Codigo Registro00100109                                                           
+Qtde Titulos   0020070                                                            
+Valor Total    0080200                                                            
+Brancos        021394 SPACE(374)                                                  
+Nr. Sequencia  3954000INCREMENTA()                                                

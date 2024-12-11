@@ -1,0 +1,61 @@
+Codigo Registro0010010'0'                                                         
+Codigo Remessa 0020020'1'                                                         
+Literal Remessa0030090'REMESSA'                                                   
+Codigo Servico 0100110'01'                                                        
+Literal Servico0120260'COBRANCA'                                                  
+Brancos        0270360                                                            
+Numero  Agencia0370390subs(sA6->A6_agencia,2,3)                                   
+Numero Conta   0400450subs(SA6->A6_numcon,3,6)                                    
+Digito Conta   0460460subs(SA6->A6_numcon,10,1)                                   
+Nome Empresa   0470760UPPER(subst(sm0->m0_nomecom,7,30))                          
+Codigo Banco   0770790'291'                                                       
+Nome Banco     0800940"B.C.N."                                                    
+Data Gravacao  0951000GravaData(dDataBase,.F.)                                    
+Densidade      1011050'06250'                                                     
+Literal Densida1061080"BPI"                                                       
+Brancos        1093880                                                            
+Num Seq. Arq.  3893940VAL(SEE->EE_ULTDSK) + 1                                     
+Num Sequencial 3954000'000001'                                                    
+Codigo Registro0010010'1'                                                         
+Codigo Inscric 0020030'02'                                                        
+Num Inscricao  0040170SM0->M0_CGC                                                 
+Brancos        0180270                                                            
+Numero Agencia 0280300SUBS(SA6->A6_AGENCIA,2,3)                                   
+Numero Conta   0310360SUBS(SA6->A6_NUMCON,3,6)                                    
+Digito Conta   0370370SUBS(SA6->A6_NUMCON,10,1)                                   
+Ident. Titulo  0380620SE1->E1_PREFIXO+SE1->E1_NUM+SE1->E1_PARCELA                 
+Brancos        0630740                                                            
+Nosso Numero   0750810SUBS(SE1->E1_NOSSONU,1,7)                                   
+Digit Nosso Num0820820SUBS(SE1->E1_NOSSONU,9,1)                                   
+Uso Banco      0831070                                                            
+Codigo Carteira1081080'1'                                                         
+Codigo Ocorrenc1091100SE1->E1_OCORREN                                             
+Seu Numero     1111200SE1->E1_PREFIXO+SE1->E1_NUM+SE1->E1_PARCELA                 
+Data Vencimento1211260GravaData(SE1->E1_VENCTO,.f.)                               
+Valor Titulo   1271392StrZero(INT(SE1->E1_VALOR * 100),13)                        
+Banco Cobrador 1401420'291'                                                       
+Agencia Cobrad 1431470'00000'                                                     
+Especie        148149001                                                          
+Aceite         1501500'N'                                                         
+Data Emissao   1511560GravaData(SE1->E1_EMISSAO,.f.)                              
+Instrucao 1    1571580"60"                                                        
+Instrucao 2    1591600"00"                                                        
+Valor Mora     1611732StrZero(INT(SE1->E1_VALJUR * 100 ),13)                      
+Data Desconto  1741790Replicate("0",6)                                            
+Valor Desconto 1801922Replicate("0",13)                                           
+Valor IOF      1932052Replicate("0",13)                                           
+Abatimento     2062182StrZero(INT(SE1->E1_DESCONT*100),13)                        
+Cod Insccricao 2192200IIF(SA1->A1_TIPO = "F","01","02")                           
+Num Inscricao  2212340StrZero(VAL(SA1->A1_CGC),14,0)                              
+Nome Sacado    2352740SA1->A1_NOME                                                
+Endereco Sacado2753140SA1->A1_ENDCOB                                              
+Bairro         3153260                                                            
+CEP Sacado     3273340SA1->A1_CEPCOB                                              
+Cidade Sacado  3353490SA1->A1_MUNCOB                                              
+Estado Sacado  3503510SA1->A1_ESTCOB                                              
+Nome Sacador   3523910                                                            
+Brancos        3923940                                                            
+Numero Sequenci3954000Incrementa()                                                
+Codigo Registro0010010'9'                                                         
+Brancos        0023940                                                            
+Num Sequencial 3954000Incrementa()                                                

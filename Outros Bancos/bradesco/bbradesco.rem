@@ -1,0 +1,53 @@
+Codigo Registro00100100                                                           
+Codigo Remessa 00200201                                                           
+Literal Remessa0030090"REMESSA"                                                   
+Codigo Servico 010011001                                                          
+Literal Servico0120260"COBRANCA"                                                  
+Codigo Empresa 0270460"00000000"+SubStr(SEE->EE_CODEMP,1,12)                      
+Nome da Empresa0470760SUBSTR(SM0->M0_NOMECOM,1,30)                                
+Codigo do Banco0770790237                                                         
+Nome do Banco  0800940'BRADESCO'                                                  
+Data Gravacao  0951000GravaData(dDataBase,.F.)                                    
+Brancos        1011080                                                            
+Ident.Sistema  109110 "MX"                                                        
+Num.Remessa    111117 "0"+SEE->EE_ULTDSK                                          
+Brancos        118394                                                             
+Num.Sequencial 395400 000001                                                      
+Codigo Registro00100191                                                           
+Codigo Inscr   002003002                                                          
+Numero Inscr   0040170SUBSTR(SM0->M0_CGC,1,14)                                    
+Codigo Empresa 0180370"00000090008000340103"                                      
+Uso da Empresa 0380620                                                            
+Zeros          063070000000000                                                    
+Nosso Numero   0710820"0080"+ SE1->E1_NUMBCO                                      
+Desc.Bonificaca08309200000000000                                                  
+Brancos        0931070                                                            
+Carteira       10810809                                                           
+Codigo Ocorrenc1091100SE1->E1_OCORREN                                             
+Seu Numero     1111200SE1->E1_PREFIXO+SE1->E1_NUM+SE1->E1_PARCELA                 
+Vencimento     1211260GravaData(SE1->E1_VENCTO,.F.)                               
+Valor Titulo   1271390STRZERO((ROUND(SE1->E1_VALOR,2)*100),13)                    
+Codigo do Banco1401420237                                                         
+Agencia Cobrad 1431460                                                            
+DAC Agencia Cob1471470                                                            
+Especie        148149001                                                          
+Aceite         1501500'N'                                                         
+Data Emissao   1511560GravaData(SE1->E1_EMISSAO,.F.)                              
+Instrucao 1    15715800000                                                        
+Instrucao 2    159160000                                                          
+Mora por dia   1611730STRZERO(INT(SE1->E1_VALJUR*100),13)                         
+Desconto ate   1741790000000                                                      
+Valor Desconto 18019200000000000000                                               
+Valor IOF      19320500000000000000                                               
+Abatimentos    20621800000000000000                                               
+Codigo Inscr.  219220002                                                          
+Numero Inscr   2212340SA1->A1_CGC                                                 
+Nome do Sacado 2352740SubStr(SA1->A1_NOME,1,40)                                   
+Lograd Sacado  2753140SubStr(SA1->A1_END,1,40)                                    
+Mensagem  1    3153260                                                            
+Cep do Sacado  3273340SubStr(SA1->A1_CEP,1,8)                                     
+Mensagem 2     3353940                                                            
+Sequencial     3954000incrementa()                                                
+Codigo Registro00100109                                                           
+Brancos        0023940                                                            
+Numero Sequenc 3954000Incrementa()                                                

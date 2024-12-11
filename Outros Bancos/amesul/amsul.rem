@@ -1,0 +1,70 @@
+Codigo Registro0010010'0'                                                         
+Codigo Remessa 0020020'1'                                                         
+Literal Remessa0030090'REMESSA'                                                   
+Codigo Servico 0100110'01'                                                        
+Literal Servico0120260'COBRANCA'                                                  
+Num Agencia Ced02703000200                                                        
+Cod Uso Sistema031032050                                                          
+Codigo Cedente 0330390'0143'                                                      
+Digito Verifica0400400                                                            
+Brancos        0410460                                                            
+Nome Empresa   0470760'ROHM INDUSTRIA ELETRONICA LTDA'                            
+Codigo Banco   0770790'215'                                                       
+Nome Banco     0800940'AMERICA DO SUL'                                            
+Data Gravacao  0951000GravaData(dDataBase,.f.)                                    
+Densidade Grava1011050'01600'                                                     
+Literal Densida1061080'BPI'                                                       
+Taxa de Juros  1091132StrZero(INT(SE1->E1_PORCJUR*100),5)                         
+Brancos        1143940                                                            
+Num Sequencial 3954000'000001'                                                    
+Codigo Registro00100101                                                           
+Cod Inscricao  002003002                                                          
+Num Inscricao  0040150434548180001                                                
+Digito Verific 016017097                                                          
+Num Agencia Ced01802100200                                                        
+Cod Uso Sistema022023050                                                          
+Cod Cedente    0240300'0143'                                                      
+Digito Verific 0310310                                                            
+Zeros          0320370                                                            
+Uso Empresa    0380620SE1->E1_PREFIXO+SE1->E1_NUM+SE1->E1_PARCELA                 
+Nosso Numero   0630690'0000000'                                                   
+Digito Nosso Nu0700700'0'                                                         
+Numero Contrato0710770'       '                                                   
+Digito Contrato0780780' '                                                         
+Cod Padrao Val 079080000                                                          
+Brancos        0810820                                                            
+Uso Banco      0831070                                                            
+Codigo Carteira10810801                                                           
+Cod Ocorrencia 109110001                                                          
+Seu Numero     1111200SE1->E1_PREFIXO+SE1->E1_NUM+SE1->E1_PARCELA                 
+Data Vencimento1211260GravaData(SE1->E1_VENCREA,.F.)                              
+Valor Titulo   1271392StrZero(INT(SE1->E1_VALOR*100),13)                          
+Banco Cobrador 1401420'215'                                                       
+Agencia Cobrado1431470'00000'                                                     
+Especie Titulo 1481490'01'                                                        
+Aceite         1501500'N'                                                         
+Data Emissao   1511560GravaData(SE1->E1_EMISSAO,.F.)                              
+Cod Instrucao1 1571580IIF(EMPTY(SE1->E1_INSTR1),'00',SE1->E1_INSTR1)              
+Cod Instrucao2 1591600IIF(EMPTY(SE1->E1_INSTR2),'00',SE1->E1_INSTR2)              
+Valor Mora     1611732STRZERO(INT(SE1->E1_VALOR * 0.10 * 100 /30),13)             
+Data Desconto  1741790REPLICATE("0",6)                                            
+Valor Desconto 1801922STRZERO(INT(SE1->E1_DESCONT*100),13)                        
+Valor IOF      1932052REPLICATE("0",13)                                           
+Valor Abatiment2062182REPLICATE("0",13)                                           
+Codigo Sacado  2192200IIF(SE1->E1_TIPO = "F",01,02)                               
+Numero Sacado  2212340STRZERO(VAL(SA1->A1_CGC),14,0)                              
+Nome Sacado    2352740SA1->A1_NOME                                                
+Endereco Sacado2753140SA1->A1_ENDCOB                                              
+Num Dias Protes3153160                                                            
+Num Dias Devolu3173180                                                            
+Brancos        3193260                                                            
+CEP Sacado     3273340SA1->A1_CEPCOB                                              
+Cidade Sacado  3353490SA1->A1_MUNCOB                                              
+Estado Sacado  3503510SA1->A1_ESTCOB                                              
+Nome Sacador   3523910'ROHM INDUSTRIA ELETRONICA LTDA'                            
+Cod Mensagem   3923930                                                            
+Brancos        3943940                                                            
+Num Sequencial 3954000Incrementa()                                                
+Codigo Registro00100109                                                           
+Brancos        0023940                                                            
+Num Sequencial 3954000Incrementa()                                                

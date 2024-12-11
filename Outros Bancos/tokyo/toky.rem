@@ -1,0 +1,53 @@
+CODIGO REGISTRO0010010'0'                                                         
+COD.IDENTIFIC  0020020'1'                                                         
+EXTENSO IDENTIF0030090'REMESSA'                                                   
+COD.SERVICO    0100110'01'                                                        
+EXTENSO SERVICO0120260'COBRANCA'                                                  
+IDENT. EMPRESA 027040000020100024157                                              
+BRANCOS        0410460                                                            
+NOME EMPRESA   0470760'ROHM INDUSTRIA ELETRONICA LTDA'                            
+CODIGO BANCO   0770790'456'                                                       
+NOME BANCO     0800940'B.DE TOKYO S/A.'                                           
+BRANCOS        0953890                                                            
+USO BANCO      3903940                                                            
+NUM SEQUENCIAL 3954000000001                                                      
+Codigo registro0010010'1'                                                         
+Brancos        0020170                                                            
+Identif.Cliente018031000020100024157                                              
+Brancos        0320370                                                            
+uso Cliente    0380620SE1->E1_PREFIXO+SE1->E1_NUM+SE1->E1_PARCELA                 
+Codigo contrato0630720replicate("0",10)                                           
+Nosso numero   0730800replicate("0",08)                                           
+Brancos        0811070                                                            
+Cod Carteira   10810801                                                           
+Cod Servico    109110001                                                          
+Seu Numero     1111200SE1->E1_PREFIXO+SE1->E1_NUM+SE1->E1_PARCELA                 
+Data Vencimento1211260gravaData(SE1->E1_VENCREA,.f.)                              
+Valor Titulo   1271392strZero(int(SE1->E1_SALDO*100),13)                          
+Cod Depositaria1401460replicate("0",07)                                           
+Branco         1471470                                                            
+Especie Doc    148149001                                                          
+Cod Aceite Tit 1501500'A'                                                         
+Data Emissao   1511560GravaData(SE1->E1_EMISSAO,.f.)                              
+Instrucao1     1571580IIF(EMPTY(SE1->E1_INSTR1),"00",SE1->E1_INSTR1)              
+Instrucao2     1591600IIF(EMPTY(SE1->E1_INSTR2),"00",SE1->E1_INSTR2)              
+Juro mora      1611732STRZERO(INT(SE1->E1_VALOR * 0.10 * 100 / 30),13)            
+Data Desconto  1741790REPLICATE("0",6)                                            
+Desconto       1801922STRZERO(INT(SE1->E1_DESCONT*100),13)                        
+Valor IOC      1932052REPLICATE("0",13)                                           
+Valor Abatiment2062182REPLICATE("0",13)                                           
+Tipo Identific 2192200IIF(SA1->A1_TIPO = "F",01,02)                               
+Numero Identif 2212340STRZERO(VAL(SA1->A1_CGC),14,0)                              
+Nome Sacado    2352740SUBSTR(SA1->A1_NOME,1,40)                                   
+Endereco Cobran2753140SA1->A1_ENDCOB                                              
+Compl. Endereco3153260                                                            
+CEP Cobranca   3273340SA1->A1_CEPCOB                                              
+Municipio Cobr 3353490SA1->A1_MUNCOB                                              
+UF Cobranca    3503510SA1->A1_ESTCOB                                              
+Nome Sacador   3523910'ROHM INDUSTRIA ELETRONICA LTDA'                            
+Codigo Filial  39239201                                                           
+Brancos        3933940                                                            
+Num Sequencial 3954000Incrementa()                                                
+Cod Registro   00100109                                                           
+Brancos        0023940                                                            
+Num Sequencial 3954000Incrementa()                                                

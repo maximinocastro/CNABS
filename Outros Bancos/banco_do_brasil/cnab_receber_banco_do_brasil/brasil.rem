@@ -1,0 +1,67 @@
+Codigo Registro00100100                                                           
+Codigo Remessa 00200201                                                           
+Literal Remessa0030090"REMESSA"                                                   
+Codigo Servico 010011001                                                          
+Literal Servico0120190"COBRANCA"                                                  
+Filler         0200260                                                            
+Agencia Origem 0270300SUBSTR(SEE->EE_AGENCIA,1,4)                                 
+DV-Pref.Agencia0310310SUBSTR(SEE->EE_AGENCIA,5,1)                                 
+Conta          032039000003226                                                    
+DV-Conta       04004003                                                           
+Convenio Cobran0410460924500                                                      
+Nome da Empresa0470760SUBSTR(SM0->M0_NOMECOM,1,30)                                
+Cod/Nome Bco   0770940"001BANCO DO BRASIL"                                        
+Data Gravacao  0951000GravaData(dDataBase,.F.)                                    
+Seq. da Remessa1011070"0"+SUBSTR(SEE->EE_ULTDSK,1,6)                              
+Brancos        1083830                                                            
+Dest.Arquivo   3843850                                                            
+Origem         3863880                                                            
+Brancos        3893940                                                            
+Sequencia      3954000"000001"                                                    
+Codigo Registro00100101                                                           
+Codigo Inscr   002003002                                                          
+Numero Inscr   0040170SUBSTR(SM0->M0_CGC,1,14)                                    
+Agencia Origem 0180210SUBSTR(SEE->EE_AGENCIA,1,4)                                 
+DV- Agencia    0220220SUBSTR(SEE->EE_AGENCIA,5,1)                                 
+Conta          023030000003226                                                    
+DV Conta       03103103                                                           
+Convenio Cob   0320370185670                                                      
+Cont.Cedente   0380620                                                            
+Nosso Numuero  0630730"185670"+SUBSTR(SE1->E1_NUMBCO,1,5)                         
+DV-Nosso Numero0740740SUBSTR(SE1->E1_NUMBCO,6,1)                                  
+Zeros          07507800000                                                        
+Brancos        0790820                                                            
+Pref. Titulo   0830850"AI"                                                        
+Variacao Cart  0860880019                                                         
+Conta Caucao   08908900                                                           
+Cod/DV Resp/Bor0901010000000000000                                                
+Brancos        1021060                                                            
+Carteira       107108017                                                          
+Cod. Comando   1091100SE1->E1_OCORREN                                             
+Numero Titulo  1111200SE1->E1_PREFIXO+SE1->E1_NUM+SE1->E1_PARCELA                 
+Data Vencto    1211260GravaData(SE1->E1_VENCTO,.F.)                               
+Valor Titulo   1271390STRZERO((ROUND(SE1->E1_VALOR,2)*100),13)                    
+Numero do Banco1401420001                                                         
+Pref-DV Ag.Cob 143147000000                                                       
+Especie Titulo 148149001                                                          
+Aceite         1501500"N"                                                         
+Data Emissao   1511560GravaData(SE1->E1_EMISSAO,.F.)                              
+Instrucoes     15716000000                                                        
+Mora Dia       1611730STRZERO(INT(SE1->E1_VALJUR*100),13)                         
+Descontos      17419200000000000000000000                                         
+IOF            193205000000000000                                                 
+Vr Abatimento  206218000000000000                                                 
+Tipo Inscricao 219220002                                                          
+CGC / CPF      2212340SA1->A1_CGC                                                 
+Nome do Sacado 2352710SUBSTR(SA1->A1_NOME,1,37)                                   
+Brancos        2722740                                                            
+Endereco       2753110SUBSTR(SA1->A1_END,1,37)                                    
+Brancos        3123260                                                            
+CEP            3273340SUBSTR(SA1->A1_CEP,1,8)                                     
+Cidade         3353490SUBSTR(SA1->A1_MUN,1,15)                                    
+UF             3503510SUBSTR(SA1->A1_EST,1,2)                                     
+Brancos        3523940                                                            
+Sequencia      3954000Incremental()                                               
+Codigo Registro0010010"9"                                                         
+Brancos        0023940                                                            
+Sequencia      3954000Incremental()                                               

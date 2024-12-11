@@ -1,0 +1,68 @@
+Codigo Registro00100100                                                           
+Codigo Remessa 00200201                                                           
+Literal Remessa0030090"REMESSA"                                                   
+Codigo Servico 010011001                                                          
+Literal Servico0120190"COBRANCA"                                                  
+Uso do Banco   0200260SPACE(07)                                                   
+Agencia        02703000001                                                        
+Conta Credito  0310360123456                                                      
+DV             03703707                                                           
+Uso do Banco   0380460000000000                                                   
+Nome Empresa   0470760SUBS(SM0->M0_NOMECOM,1,30)                                  
+Codigo Banco   0770790409                                                         
+Nome Banco     0800870"UNIBANCO"                                                  
+Uso Banco      0880940SPACE(7)                                                    
+Data Gravacao  0951000GravaData(dDatabase,.F.)                                    
+Densidade      101105001600                                                       
+Literal Densida1061080"BPI"                                                       
+Uso Banco      1093940REPLICATE("0",286)                                          
+Sequencial     3954000000001                                                      
+Codigo Registro00100191                                                           
+Codigo Inscr   002003002                                                          
+Numero Inscr   0040170SUBSTR(SM0->M0_CGC,1,14)                                    
+Agencia        0180210                                                            
+Conta do titulo0220270                                                            
+DV             0280280                                                            
+Uso Banco      0290370REPLICATE("0",9)                                            
+Uso da Empresa 0380620SE1->E1_CLIENTE+SE1->E1_LOJA                                
+Nosso Numero   0630720NossoNum()                                                  
+DV             0730730                                                            
+Mensagem       0741030                                                            
+Codigo Moeda   1041070                                                            
+Carteira       10810801                                                           
+Tipo Transacao 109110001                                                          
+Seu Numero     1111200SE1->E1_PREFIXO+SE1->E1_NUM+SE1->E1_PARCELA                 
+Vencto. Titulo 1211260Gravadata(SE1->E1_VENCTO,.F.)                               
+Valor Titulo   1271392RIGHT(STR(SE1->E1_VLCRUZ),13)                               
+Banco Cobrador 1401420409                                                         
+Uso Banco      14314300                                                           
+Agenc.Cobradora14414700001                                                        
+Especie        1481490Tabela("17",SUBSTR(SE1->E1_TIPO,1,2))                       
+Aceite         1501500"A"                                                         
+Data Emissao   1511560Gravadata(SE1->E1_EMISSAO,.F.)                              
+Instrucao 1    1571580SE1->E1_INSTR1                                              
+Instrucao 2    1591600SE1->E1_INSTR2                                              
+Juros de 1 dia 1611732SE1->E1_VALJUR                                              
+Data Desconto  1741790GravaData((SE1->E1_VENCORI-SE1->E1_DIADESC),.F.)            
+Valor Desconto 1801922                                                            
+Uso do Banco   1932052Replicate("0",13)                                           
+Abatimento     2062180                                                            
+Cod.Inscr.Sacad219220002                                                          
+CGC/CPF Sacado 2212340SA1->A1_CGC                                                 
+Nome do Sacado 2352640SubStr(SA1->A1_NOME,1,30)                                   
+Uso Banco      2652740Replicate("0",10)                                           
+Endereco Sacado2753040SUBS(SA1->A1_END,1,30)                                      
+Complem.Enderec3053140SUBS(SA1->A1_END,31,10)                                     
+Bairro Sacado  3153260SUBS(SA1->A1_BAIRRO,1,12)                                   
+CEP do Sacado  3273340SA1->A1_CEP                                                 
+Cidade Sacado  3353490SUBS(SA1->A1_MUN,1,15)                                      
+Estado Sacado  3503510SA1->A1_EST                                                 
+Sacador/Avalist3523810                                                            
+Uso Banco      3823910REPLICATE("0",10)                                           
+Prazo Protesto 3923930                                                            
+Uso do Banco   39439400                                                           
+Sequencial     3954000Incrementa()                                                
+Codigo Registro00100109                                                           
+Brancos        0023910REPLICATE("0",390)                                          
+Numero Geracao 3923940                                                            
+Numero Sequenc 3954000Incrementa()                                                

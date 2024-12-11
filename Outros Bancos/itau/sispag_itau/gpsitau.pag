@@ -1,0 +1,86 @@
+ACodigo do Campo0010030"341"                                                       
+ACodigo do Lote 0040070StrZero(nNumRegLote,4)                                      
+ATipo Registro  0080080"0"                                                         
+ABrancos        0090140Space(06)                                                   
+ALayout Arquivo 0150170"040"                                                       
+AEmpresa-Inscric0180180If(nTipInsc==3,"1","2")                                     
+AInscr-Numero   0190320cCGC                                                        
+ABrancos        0330520Space(20)                                                   
+AAgencia        0530570StrZero(Val(cCodAgencia),5)                                 
+ABrancos        0580580Space(1)                                                    
+AConta          0590700Left(StrZero(Val(cNumConta),13),12)                         
+ABrancos        0710710Space(1)                                                    
+ADAC            0720720Right(StrZero(Val(cNumConta),12),1)                         
+ANome da Empresa0731020fString(cRazao,30)                                          
+ANome do Banco  1031320fString("ITAU",30)                                          
+ABrancos        1331420Space(10)                                                   
+AArquivo Codigo 1431430"1"                                                         
+AData de Geracao1441510GRAVADATA(dDataBase,.F.,5)                                  
+AHora de Geracao1521570SUBS(TIME(),1,2)+SUBS(TIME(),4,2)+SUBS(TIME(),7,2)          
+AZeros          1581660"000000000"                                                 
+AUnid.de Densid.1671710"00000"                                                     
+ABrancos        1722400Space(69)                                                   
+BCodigo do Banco0010030"341"                                                       
+BCodigo do Lote 0040070StrZero(nNumRegLote,4)                                      
+BTipo Registro  0080080"1"                                                         
+BTipo  Operacao 0090090"C"                                                         
+BTipo Pagamento 0100110"98"                                                        
+BForma Pagamento0120130"17"                                                        
+BLayout do Lote 0140160"030"                                                       
+BBrancos        0170170space(1)                                                    
+BEmpresa-Incric 0180180If(nTipInsc==3,"1","2")                                     
+BInscricao-Numer0190320fString(cCEI,14)                                            
+BBrancos        0330520space(20)                                                   
+BAgencia        0530570StrZero(Val(cCodAgencia),5)                                 
+BBrancos        0580580space(1)                                                    
+BConta          0590700Left(StrZero(Val(cNumConta),13),12)                         
+BBrancos        0710710Space(1)                                                    
+BDAC            0720720Right(StrZero(Val(cNumConta),12),1)                         
+BNome da Empresa0731020fString(cRazao,30)                                          
+BFinalidade Lote1031320Space(30)                                                   
+BHistorico C/C  1331420Space(10)                                                   
+BEndereco       1431720fString(cEndereco,30)                                       
+BNumero         1731770"00000"                                                     
+BComplemento    1781920SPACE(15)                                                   
+BCidade         1932120fString(cCidade,20)                                         
+BCEP            2132200fString(cCep,8)                                             
+BEstado         2212220cUF                                                         
+BBrancos        2232300Space(8)                                                    
+BOcorrencias    2312400Space(10)                                                   
+DCodigo do Banco0010030"341"                                                       
+DCodigo do Lote 0040070Strzero(nNumRegLote,4)                                      
+DTipo Registro  0080080"5"                                                         
+DBrancos        0090170Space(09)                                                   
+DTotal Qtde Reg.0180230"000001"                                                    
+DTotal Vlr.INSS 0240372fValor(nValInss,14)                                         
+DTotal Out.Entid0380510fValor(nValEntid,14)                                        
+DTotal Atu.Monet0520650fValor(nValJuros,14)                                        
+DTotal Vlr.Arrec0660790fValor(nValInss+nValEntid+nValJuros,14)                     
+DBrancos        0802300Space(151)                                                  
+DOcorrencias    2312400Space(10)                                                   
+FCodigo do Banco0010030"341"                                                       
+FCodigo do Lote 0040070"9999"                                                      
+FTipo Registro  0080080"9"                                                         
+FBrancos        0090170Space(9)                                                    
+FTotal Qtde Lote0180230StrZero(nTotRegLote,6)                                      
+FTotal Qtde Reg.0240290StrZero(nTotRegArq,6)                                       
+FBrancos        0302400space(211)                                                  
+NCodigo do Banco0010030"341"                                                       
+NCodigo do Lote 0040070StrZero(nNumRegLote,4)                                      
+NTipo Registro  0080080"3"                                                         
+NNumero Registro0090130"00001"                                                     
+NSegmento       0140140"N"                                                         
+NTipo Movimento 0150170"000"                                                       
+NTributo        0180190"01"                                                        
+NCod. Pagamento 0200230fString(cCodPag,4)                                          
+NCompetencia    0240290fString(cCompetencia,6)                                     
+NIdentificador  0300430fString(cCei,14)                                            
+NValor Tributo  0440572fValor(nValInss,14)                                         
+NValor Out.Entid0580712fValor(nValEntid,14)                                        
+NAtual.Monetaria0720852fValor(nValJuros,14)                                        
+NVal. Arrecadado0860992fValor(nValInss+nValEntid+nValJuros,14)                     
+NData da Arrec. 1001070GRAVADATA(dDatVencto,.F.,5)                                 
+NBrancos        1081950Space(88)                                                   
+NSeu Numero     1962150Space(20)                                                   
+NNosso Numero   2162300Space(15)                                                   
+NOcorrencias    2312400Space(10)                                                   

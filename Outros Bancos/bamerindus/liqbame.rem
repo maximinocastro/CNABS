@@ -1,0 +1,51 @@
+REGISTRO       001001 0                                                           
+REMESSA        002002 1                                                           
+REMESSA        003009 "REMESSA"                                                   
+COD SERVICO    010011 01                                                          
+LITERAL        012026 "CONTAS A PAGAR"                                            
+NR CONTRATO    027032 017787                                                      
+CGC            033046 SUBS(SM0->M0_CGC,1,14)                                      
+NOME           047076 SUBS(SM0->M0_NOMECOM,1,30)                                  
+COD BANCO      077079 "399"                                                       
+NOME BANCO     080094 "BAMERINDUS S/A "                                           
+DATA GRAVACAO  095100 GRAVADATA(DDATABASE,.F.,2)                                  
+DENSIDADE      101105 "01600"                                                     
+LIT DENSIDADE  106108 "BPI"                                                       
+HORA GRAVACAO  109114 SUBS(TIME(),1,2)+SUBS(TIME(),4,2)+SUBS(TIME(),7,2)          
+APLICACAO      115117 "CPG"                                                       
+SEQ MOVIMENTO  118123 SPACE(6)                                                    
+BRANCOS        124394 SPACE(271)                                                  
+SEQUENCIAL     395400 INCREMENTA()                                                
+REGISTRO       001001 1                                                           
+CPF CREDOR     002015 "000"+SUBS(SRA->RA_CIC,1,11)                                
+NOME CREDOR    016045 SUBS(SRA->RA_NOME,1,30)                                     
+DATA VENCIMENTO046051 GRAVADATA(DDATAPGTO,.F.,2)                                  
+BANCO          052054 SUBS(SRA->RA_BCDEPSA,1,3)                                   
+AGENCIA        055058 SUBS(SRA->RA_BCDEPSA,5,4)                                   
+CONTA CREDOR   059070   SUBS(SRA->RA_CTDEPSA,1,12)                                
+NUMERO DOCUM   071086   SRA->RA_FILIAL + SRA->RA_MAT+SPACE(8)                     
+VALOR          087099   NVALOR                                                    
+OPERACAO       100100   "I"                                                       
+AVISO          101101   "N"                                                       
+FINALIDADE     102131   "PAGAMENTO DE SALARIO          "                          
+COMPL FINALID  132161   SPACE(30)                                                 
+TIPO MOEDA     162163 03                                                          
+TIPO PAGAMENTO 164165 04                                                          
+ENDERECO       166195 SPACE(30)                                                   
+END NUMERO     196201 SPACE(6)                                                    
+END COMPLEM    202231 SPACE(30)                                                   
+END BAIRRO     232261 SPACE(30)                                                   
+BRANCOS        262266 SPACE(5)                                                    
+END CIDADE     267286 SPACE(20)                                                   
+END ESTADO     287288 SPACE(2)                                                    
+END CEP        289296 SPACE(8)                                                    
+BRANCOS        297394 SPACE(98)                                                   
+SEQUENCIA      395400 INCREMENTA()                                                
+REGISTRO       001001 "9"                                                         
+QUANT REGIST   002007 NTOTFUNC+2                                                  
+QUANT DEL      008013 000000                                                      
+QUANT INC      014019 NTOTFUNC+2                                                  
+VALOR          020034 NTOTAL                                                      
+VL REG CANC    035049 00000000000000                                              
+BRANCO         050394 SPACE(345)                                                  
+SEQ            395400 INCREMENTA()                                                

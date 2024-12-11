@@ -1,0 +1,64 @@
+Codigo Registro00100100                                                           
+Codigo Remessa 00200201                                                           
+Literal Remessa0030090"REMESSA"                                                   
+Codigo Servico 010011003                                                          
+Literal Servico0120190"COBRANCA"                                                  
+Filler         0200260                                                            
+Agencia Origem 0270300SUBSTR(SEE->EE_AGENCIA,1,4)                                 
+Cliente        0310450"005201189000102"                                           
+Filler         0460460                                                            
+Nome da Empresa0470760"KIMINAS DIST.PROD.ALIM.LTDA"                               
+Codigo do Banco0770790SUBSTR(SEE->EE_CODIGO,1,3)                                  
+Nome do Banco  0800940"BANCANTIL"                                                 
+Data Gravacao  0951000GravaData(dDataBase,.F.)                                    
+Filler         1013810                                                            
+Densidade      3823860"01600"                                                     
+BPI Gravacao   3873890                                                            
+Num.Sequenci   3903940SUBSTR(SEE->EE_ULTDSK,1,5)                                  
+Sequencia      3954000"000001"                                                    
+Codigo Registro00100101                                                           
+Codigo Inscr   002003002                                                          
+Numero Inscr   0040170"05201189000102"                                            
+Agencia Origem 0180210SUBSTR(SEE->EE_AGENCIA,1,4)                                 
+Numero da Conta0220280SUBSTR(SEE->EE_CONTA,3,6)+SUBSTR(SEE->EE_CONTA,10,1)        
+Num do Contrato0290370SUBSTR(SEE->EE_CODEMP,1,9)                                  
+Uso Empresa    0380620                                                            
+Agencia Origem 0630660SUBSTR(SEE->EE_AGENCIA,1,4)                                 
+Nosso Numero   0670760SUBSTR(SE1->E1_NUMBCO,1,10)                                 
+Digito Verifica0770770SUBSTR(SE1->E1_INSTR1,1,1)                                  
+Filler         0780820                                                            
+CGC/CPF Cedente0830970"005201189000102"                                           
+Qtd moeda      09810700000000000                                                  
+Codigo Operacao1081080"3"                                                         
+Cod Movimento  1091100SE1->E1_OCORREN                                             
+Seu Numero     1111200SE1->E1_PREFIXO+SE1->E1_NUM+SE1->E1_PARCELA                 
+Vencimento     1211260GravaData(SE1->E1_VENCTO,.F.)                               
+Valor do Titulo1271390STRZERO((ROUND(SE1->E1_VALOR,2)*100),13)                    
+Banco Cobrador 1401420"389"                                                       
+Ag. Cobradora  1431470"00000"                                                     
+Codigo Especie 1481490"01"                                                        
+Aceite         1501500"N"                                                         
+Data de Emissao1511560GravaData(SE1->E1_EMISSAO,.F.)                              
+Instrucao - 1  157158000                                                          
+Instrucao - 2  159160000                                                          
+Juros de Mora  1611730STRZERO(INT(SE1->E1_VALJUR*100),13)                         
+Desconto ate   1741790000000                                                      
+Valor Desconto 18019200000000000000                                               
+Valor IOF      19320500000000000000                                               
+Valor Abatiment20621800000000000000                                               
+Cod Insc Sacado2192200"02"                                                        
+Num Insc Sacado2212340SA1->A1_CGC                                                 
+Nome do Sacado 2352740SubStr(SA1->A1_NOME,1,40)                                   
+Endereco Sacado2753140SubStr(SA1->A1_END,1,40)                                    
+Bairro Sacado  3153260SubStr(SA1->A1_BAIRRO,1,12)                                 
+Cep Prefixo    3273310SubStr(SA1->A1_CEP,1,5)                                     
+Cep Sufixo     3323340SubStr(SA1->A1_CEP,6,3)                                     
+Cidade         3353490SubStr(SA1->A1_MUN,1,15)                                    
+Estado         3503510SubStr(SA1->A1_EST,1,2)                                     
+Sacador/Avalist3523810                                                            
+Filler         3823930                                                            
+Codigo da Moeda3943940"1"                                                         
+Sequencia      3954000Incremental()                                               
+Codigo Registro0010010"9"                                                         
+Brancos        0023940                                                            
+Sequencia      3954000Incremental()                                               

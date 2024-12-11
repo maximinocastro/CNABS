@@ -1,0 +1,56 @@
+Codigo Registro00100100                                                           
+Codigo Remessa 00200201                                                           
+Literal Remessa0030090'REMESSA'                                                   
+Codigo Servico 010011001                                                          
+Literal Servico0120190'COBRANCA'                                                  
+Brancos        0200260                                                            
+Codigo Empresa 0270460163220547638164078                                          
+Nome da Empresa0470760'FMV - COMERCIO PRODUTOS AUTOMOTIVOS'                       
+Codigo do Banco0770790001                                                         
+Nome do Banco  0800940'BANCO DO BRASIL'                                           
+Data Gravacao  0951000Date()                                                      
+Brancos        1011070IncRementa()                                                
+Numero Sequenc.3954000000001                                                      
+Codigo Registro00100101                                                           
+Codigo Inscr   002003002                                                          
+Numero CGC     0040170SM0->m0_cgc                                                 
+Codigo Empresa 0180370"163220547638164078"                                        
+Numero Titulo  0380620SE1->E1_NUM+STRZERO(E1_PARCELA,2)                           
+Nosso Numero   0630740SUBS(SE1->E1_NUMBCO,1,12)                                   
+               075076000                                                          
+               077078000                                                          
+Brancos        0790820                                                            
+Seu Numero     0830850SE1->E1_PREFIXO+SE1->E1_NUM+SE1->E1_PARCELA                 
+Varicao        0861010'190000000000000      '                                     
+Carteira       1071080'17'                                                        
+Registro titulo1091100'01'                                                        
+Numero Titulo  1111200SE1->E1_PREFIXO+SE1->E1_NUM+SE1->E1_PARCELA                 
+Vencimento     1211260SE1->E1_VENCTO                                              
+Valor Titulo   1271390strzero(int(SE1->E1_SALDO*100),13)                          
+Banco          1401420'001'                                                       
+Data Emissao   1431470'16322'                                                     
+Especie Titulo 1481490"01"                                                        
+Aceite         1501500"N"                                                         
+Emissao Titulo 1511560se1->e1_vencto                                              
+Inst. Codfi. 01157158000                                                          
+Inst. Codfi. 02159160000                                                          
+Juros Mora Dia 1611732STRZERO(int(se1->e1_valjur*100),13)                         
+Data Descontos 1741790000000                                                      
+Valor Descontos1801920strzero(0,13)                                               
+Valor IOF      1932050strzero(0,13)                                               
+Valor Abatiment2062180strzero(0,13)                                               
+Tipo CGC / CPF 2192200if(right(sa1->a1_cgc,2)= '  ',01,02)                        
+CGC Do Cliente 2212340SA1->A1_cgc                                                 
+Nome Cliente   2352710Substr(SA1->A1_nome,1,37)                                   
+brancos        2722740                                                            
+Endereco Sacado2753110Substr(SA1->A1_end,1,37)                                    
+Brancos        3123260                                                            
+cep            3273340SA1->A1_cep                                                 
+Municipio      3353490sa1->a1_mun                                                 
+Estado         3503510sa1->est                                                    
+Observacoes    3523910                                                            
+Brancos        3923940                                                            
+Numero Seq.    3954000IncRementa()                                                
+Codigo Registro00100109                                                           
+Brancos        0023940                                                            
+Numero Sequenc 3954000Incrementa()                                                

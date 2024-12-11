@@ -1,0 +1,56 @@
+Codigo Registro0010010'0'                                                         
+Ident. Arquivo 0020020'1'                                                         
+Ident.Arq. Ext.0030090'REMESSA'                                                   
+Codigo Servico 0100110'01'                                                        
+Literal Servico0120260'COBRANCA'                                                  
+Codigo Empresa 0270320'0'                                                         
+Filial do Cod. 0330340                                                            
+Brancos        0350460'FMV - COMERCIO PRODUTOS AUTOMOTIVOS'                       
+Codigo do Banco0770790415                                                         
+Nome do Banco  0800940'NACIONAL S.A'                                              
+Data Gravacao  0951000Date()                                                      
+Desidade       1011050'06250'                                                     
+Lit. Densidade 1061080'BPI'                                                       
+Brancos        1093940                                                            
+Numero Sequenc.3954000000001                                                      
+Codigo Registro00100101                                                           
+Codigo Inscr   002003002                                                          
+Numero Inscr   0040170SM0->m0_cgc                                                 
+Codigo Empresa 0180310IF(se1->E1_MOEDA=1 ,"00384001033779",'00384013033779')      
+Brancos        0320370                                                            
+Uso da Empresa 0380620SE1->E1_NUM+SE1->E1_PARCELA                                 
+Nosso Numero   0630720SUBS(SE1->E1_NUMBCO,1,10)                                   
+Brancos        0731070                                                            
+Carteira       1081080"1"                                                         
+Codigo Ocorrenc109110001                                                          
+Seu Numero     1111200SE1->E1_PREFIXO+SE1->E1_NUM+SE1->E1_PARCELA                 
+Vencimento     1211260SE1->E1_VENCTO                                              
+Valor Titulo   1271392STRZERO(INT(SE1->E1_SALDO*100),13)                          
+Codigo do Banco1401420415                                                         
+Agencia Cobrad 1431470'00000'                                                     
+Especie        1481490'01'                                                        
+Aceite         1501500'N'                                                         
+Data Emissao   1511560SE1->E1_EMISSAO                                             
+Instrucao 1    1571580"01"                                                        
+Instrucao 2    1591600"00"                                                        
+Juros de 1 dia 1611732STRZERO(INT(SE1->E1_VALJUR*100),13)                         
+Desconto ate   1741790                                                            
+Valor Desconto 1801922STRZERO(0,13)                                               
+Valor IOF      1932052STRZERO(0,13)                                               
+Abatimentos    2062182STRZERO(0,13)                                               
+Codigo Inscr.  2192200IF(Right(SA1->A1_CGC,2)='  ','01','02')                     
+Numero Inscr   2212340SA1->A1_CGC                                                 
+Nome do Sacado 2352710SA1->A1_NOME                                                
+Brancos        2722740                                                            
+Lograd Sacado  2753110SA1->A1_END                                                 
+Brancos        3123140                                                            
+Bairro         3153260Substr(SA1->A1_BAIRRO,1,12)                                 
+Cep            3273340Substr(SA1->A1_CEP,1,8)                                     
+Cidade         3353490SA1->A1_MUN                                                 
+Estado         3503510SA1->A1_EST                                                 
+Mensagem       3523880                                                            
+Brancos        3893940                                                            
+Numero Seq.    3954000IncRementa()                                                
+Codigo Registro00100109                                                           
+Brancos        0023940                                                            
+Numero Sequenc 3954000Incrementa()                                                

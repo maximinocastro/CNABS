@@ -1,0 +1,57 @@
+Codigo Registro00100100                                                           
+Codigo Remessa 00200201                                                           
+Literal Remessa0030090'REMESSA'                                                   
+Codigo Servico 010011001                                                          
+Literal Servico0120190'COBRANCA'                                                  
+Brancos        0200260                                                            
+Codigo Empresa 0270460'029410000333750042  '                                      
+Nome da Empresa0470760'ROHM INDUSTRIA ELETRONICA LTDA'                            
+Codigo do Banco0770790001                                                         
+Nome do Banco  0800940'BANCO DO BRASIL'                                           
+Data Gravacao  0951000Date()                                                      
+Sequencia Remes1011070IncRementa()                                                
+Brancos        1083940                                                            
+Num Sequencial 3954000000001                                                      
+Codigo Registro00100101                                                           
+Codigo Inscr   002003002                                                          
+Numero CGC     004017043454818000197                                              
+Codigo Empresa 0180370"029410000333750042"                                        
+Numero Titulo  0380620SE1->E1_NUM+SE1->E1_PARCELA                                 
+Nosso Numero   0630740'000000000000'                                              
+               075076000                                                          
+               077078000                                                          
+Brancos        0790820                                                            
+Seu Numero     0830850SE1->E1_PREFIXO                                             
+Variacao       0861060'094000000 000000     '                                     
+Carteira       1071080'11'                                                        
+Registro titulo1091100'01'                                                        
+Numero Titulo  1111200SE1->E1_PREFIXO+SE1->E1_NUM+SE1->E1_PARCELA                 
+Vencimento     1211260Gravadata(SE1->E1_VENCTO,.f.)                               
+Valor Titulo   1271392strzero(int(SE1->E1_VALOR*100),13)                          
+Banco          1401420'001'                                                       
+Data Emissao   1431470'0000 '                                                     
+Especie Titulo 1481490"01"                                                        
+Aceite         1501500"N"                                                         
+Emissao Titulo 1511560Gravadata(SE1->E1_EMISSAO,.F.)                              
+Inst. Codfi. 01157158000                                                          
+Inst. Codfi. 02159160000                                                          
+Juros Mora Dia 1611732STRZERO(int(SE1->E1_VALOR * 0.10 * 100 / 30),13)            
+Data Descontos 1741790000000                                                      
+Valor Descontos1801920REPLICATE("0",13)                                           
+Valor IOF      1932050REPLICATE("0",13)                                           
+Valor Abatiment2062180REPLICATE("0",13)                                           
+Tipo CGC / CPF 2192200if(right(sa1->a1_cgc,2)= '  ',01,02)                        
+CGC Do Cliente 2212340SA1->A1_cgc                                                 
+Nome Cliente   2352710Substr(SA1->A1_nome,1,37)                                   
+brancos        2722740                                                            
+Endereco Sacado2753110SA1->A1_ENDCOB                                              
+Brancos        3123260                                                            
+cep            3273340SA1->A1_CEPCOB                                              
+Municipio      3353490SA1->A1_MUNCOB                                              
+Estado         3503510SA1->A1_ESTCOB                                              
+Observacoes    3523910                                                            
+Brancos        3923940                                                            
+Numero Seq.    3954000IncRementa()                                                
+Codigo Registro00100109                                                           
+Brancos        0023940                                                            
+Numero Sequenc 3954000Incrementa()                                                

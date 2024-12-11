@@ -1,0 +1,65 @@
+Codigo Registro00100100                                                           
+Codigo Remessa 00200201                                                           
+Literal Remessa0030090'remessa'                                                   
+Codigo Servico 010011001                                                          
+Literal Servico0120260'cobranca'                                                  
+Agencia cedente0270300SEE->EE_AGENCIA                                             
+Conta          0310360SEE->EE_CONTA                                               
+Digito Verific.0370370SUBS(SEE->EE_CONTA,7,1)                                     
+Sem Uso        0380460                                                            
+Nome da Empresa0470760SUBSTR(SM0->M0_NOME,1,30)                                   
+Codigo Banco   0770790"409"                                                       
+Nome do Banco  0800940'Unibanco'                                                  
+Data da Gravaca0951000GravaData(dDataBase,.F.)                                    
+Densidade      1011050'1.600'                                                     
+Literal Densid.1061080"BPL"                                                       
+Sem Uso        1093910                                                            
+Numero Geracao 3923940                                                            
+Num. Sequencial3954000"000001"                                                    
+Codigo Registro00100101                                                           
+Codigo Inscr   002003002                                                          
+Numero Inscr   0040170'67936752000173'                                            
+Agencia        0180210SEE->EE_AGENCIA                                             
+Conta          0220270SEE->EE_CONTA                                               
+Digito Verific.0280280SUBS(SEE->EE_CONTA,7,1)                                     
+Brancos        0290370                                                            
+Controle Partic0380620SE1->E1_PREFIXO+SE1->E1_NUM+SE1->E1_PARCELA                 
+Nosso Numero   0630730STRZERO(VAL(SE1->E1_NUMBCO),11,0)                           
+Sem Uso        0740820                                                            
+Uso Banco      0831030                                                            
+Moeda          1041070'R$14'                                                      
+Carteira       10810805                                                           
+Tipo Transacao 1091100IF(SE1->E1_OCORREN='  ',01,SE1->E1_OCORREN)                 
+Seu Numero     1111200SE1->E1_PREFIXO+SE1->E1_NUM+SE1->E1_PARCELA                 
+Vencimento     1211260SE1->E1_VENCTO                                              
+Valor do Titulo1271392STRZERO(SE1->E1_VALOR*100,13,0)                             
+Banco Cobrador 1401420'409'                                                       
+Sem Uso        14314300                                                           
+Ag. Cobradora  1441470'0000'                                                      
+Especie Titulo 1481490"01"                                                        
+Aceite         1501500'A'                                                         
+Data Emissao   1511560SE1->E1_EMISSAO                                             
+Instrucao 01   1571580IIF(EMPTY(SE1->E1_INSTR1),01,SE1->E1_INSTR1)                
+Instrucao 02   1591600IIF(EMPTY(SE1->E1_INSTR2),05,SE1->E1_INSTR2)                
+Juros          1611732STRZERO(SE1->E1_VALJUR,13,0)                                
+Desconto Data  1741790CTOD("//")                                                  
+Valor Desconto 1801922STRZERO(SE1->E1_DESCONT,13,0)                               
+Valor IOF      1932052REPLICATE("0",13)                                           
+Abatimento     2062182REPLICATE("0",13)                                           
+Cod.Inscricao  2192200IIF(SA1->A1_TIPO="F",01,02)                                 
+Num.Inscricao  2212340VAL(SA1->A1_CGC)                                            
+Nome do Sacado 2352740SA1->A1_NOME                                                
+Logradouro/N§  2753040SA1->A1_ENDCOB                                              
+Complemento    3053140SA1->A1_COMCOB                                              
+Bairro         3153260SA1->A1_BAIRRO                                              
+CEP            3273340SA1->A1_CEPCOB                                              
+Cidade         3353490SA1->A1_MUNCOB                                              
+Estado do Sac. 3503510SA1->A1_ESTCOB                                              
+Sacador        3523910                                                            
+Prazo Protesto 3923930                                                            
+Sem Uso        3943940                                                            
+Num.Sequencial 3954000incrementa()                                                
+Codigo Registro00100109                                                           
+Sem Uso        0023910                                                            
+Numero Geracao 3923940                                                            
+Numero Sequenc 3954000Incrementa()                                                

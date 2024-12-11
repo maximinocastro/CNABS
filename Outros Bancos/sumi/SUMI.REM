@@ -1,0 +1,56 @@
+Codigo Registro0010010'0'                                                         
+Codigo Remessa 0020020'1'                                                         
+Identif Remessa0030090'REMESSA'                                                   
+Codigo Servico 0100110'01'                                                        
+Identif Servico0120260'COBRANCA'                                                  
+Identif Empresa0270390'0001221118RHM'                                             
+Serie          0400420VAL(RIGHT(SEE->EE_ULTDSK,3))+1                              
+Brancos        0430460                                                            
+Nome Empresa   0470760'ROHM INDUSTRIA ELETRONICA LTDA'                            
+Codigo Banco   0770790'464'                                                       
+Nome Banco     0800940'SUMITOMO'                                                  
+Data Gravacao  0951000GravaData(dDataBase,.f.)                                    
+Brancos        1013940                                                            
+Num Sequencial 3954000'000001'                                                    
+Codigo Registro0010010'1'                                                         
+Codigo Inscric 0020030'02'                                                        
+CGC Cedente    0040170'43454818000197'                                            
+Brancos        0180370                                                            
+Identif Empresa0380620SE1->E1_PREFIXO+SE1->E1_NUM+SE1->E1_PARCELA                 
+Nosso Numero   0630690'0000000'                                                   
+Brancos        0701030                                                            
+Tipo Moeda     10410400                                                           
+Brancos        1051070                                                            
+Ident. Carteira1081080'1'                                                         
+Codigo Ocorrenc1091100'01'                                                        
+Numero Duplic. 1111200SE1->E1_PREFIXO+SE1->E1_NUM+SE1->E1_PARCELA                 
+Vencimento     1211260SE1->E1_VENCTO                                              
+Valor Titulo   1271392STRZERO(INT(SE1->E1_VALOR*100),13)                          
+Brancos        1401470                                                            
+Especie        1481490'01'                                                        
+Brancos        1501500                                                            
+Data Emissao   1511560GravaData(SE1->E1_EMISSAO,.F.)                              
+Instrucao-1    1571580IIF(EMPTY(SE1->E1_INSTR1),'01',SE1->E1_INSTR1)              
+Instrucao-2    1591600IIF(EMPTY(SE1->E1_INSTR2),'13',SE1->E1_INSTR2)              
+Juros de 1 dia 1611732STRZERO(INT(SE1->E1_VALOR * 0.10 * 100 / 30),13)            
+Desconto ate   1741790REPLICATE("0",6)                                            
+Valor Desconto 1801922STRZERO(INT(SE1->E1_DESCONT*100),13)                        
+Brancos        1932050                                                            
+Valor do Abatim2062182REPLICATE("0",13)                                           
+Tipo do Sacado 2192200IIF(SA1->A1_TIPO="F",01,02)                                 
+CGC do Sacado  2212340STRZERO(VAL(SA1->A1_CGC),14,0)                              
+Nome do Sacado 2352740SA1->A1_NOME                                                
+Endereco Sacado2753140SA1->A1_ENDCOB                                              
+Brancos        3153260                                                            
+Cep            3273340SA1->A1_CEPCOB                                              
+Brancos        3353360                                                            
+Cidade         3373510SA1->A1_MUNCOB                                              
+Estado         3523530SA1->A1_ESTCOB                                              
+Nome do Sacador3543880'ROHM INDUSTRIA ELETRONICA LTDA'                            
+Brancos        3893940                                                            
+Num. Sequencial3954000INCREMENTA()                                                
+Codigo Registro0010010'9'                                                         
+Quantid. Total 0020060Incrementa()-2                                              
+Valor Total    0070210STRZERO(INT(SOMAVALOR()),15)                                
+Brancos        0223940                                                            
+Num. Sequencial3954000INCREMENTA()                                                

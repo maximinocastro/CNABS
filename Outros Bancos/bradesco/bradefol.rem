@@ -1,0 +1,27 @@
+CODIGO REGISTRO0010010'0'                                                         
+CONSTANTE      0020260'1REMESSA03CREDITO C/C'                                     
+COD.DA EMPRESA 0270460"023940705000031429"                                        
+NOME DA EMPRESA0470760"30024"+SUBST(SM0->M0_NOME,1,25)                            
+CODIGO BANCO   0770790'237'                                                       
+NOME DO BANCO  0800940'BRADESCO'                                                  
+DATA GRAVACAO  0951020GRAVADATA(DDATABASE,.F.,5)                                  
+CONSTANTE      1031100"01600BPI"                                                  
+BRANCOS        1111180GRAVADATA(DDATAPGTO,.F.,5)                                  
+SEQUENCIA      1191200SPACE(01)+"N"                                               
+BRANCO         1211940SPACE(74)                                                   
+NUM.SEQ.REGISTR1952000"000001"                                                    
+CODIGO REGISTRO0010620'1'+SPACE(61)                                               
+AG.CREDITO     0630670"0"+SUBSTR(SRA->RA_BCDEPSA,4,4)                             
+RAZAO CTA CORRE0680720IIF(SRA->RA_TPCTA=1,"07050","10510")                        
+CTA CORRENTE   0730790SUBSTR(SRA->RA_CTDEPSA,1,7)                                 
+DG.C/C/ + RESER0800820SUBSTR(SRA->RA_CTDEPSA,8,1)+SPACE(02)                       
+NOME FAVORECIDO0831200SUBSTR(SRA->RA_NOME,1,38)                                   
+MATRICULA FAVOR1211260SRA->RA_MAT                                                 
+VLR.CREDITO    1271392STRTRAN(STRZERO(NVALOR,16,2),".","")                        
+COD.SERVICO    1401420"298"                                                       
+BRANCOS        1431940SPACE(052)                                                  
+NUMERO SEQUENC.1952000INCREMENTA()                                                
+CODIGO REGISTRO0010010'9'                                                         
+TOT ACUMULADO  0020140NTOTAL                                                      
+BRANCOS        0151940SPACE(180)                                                  
+NRO.SEQUENCIA  1952000INCREMENTA()                                                

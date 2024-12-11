@@ -1,0 +1,25 @@
+#include "rwmake.ch"        // incluido pelo assistente de conversao do AP5 IDE em 26/09/00
+
+User Function Pagban()        // incluido pelo assistente de conversao do AP5 IDE em 26/09/00
+
+//ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
+//³ Declaracao de variaveis utilizadas no programa atraves da funcao    ³
+//³ SetPrvt, que criara somente as variaveis definidas pelo usuario,    ³
+//³ identificando as variaveis publicas do sistema utilizadas no codigo ³
+//³ Incluido pelo assistente de conversao do AP5 IDE                    ³
+//ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+
+SetPrvt("_BANCO,")
+
+//  PROGRAMA PARA SEPARAR O BANCO DO CODIGO DE BARRAS
+//  CNAB BRADESCO A PAGAR (PAGFOR) - POSICOES (96-98)
+
+IF SUBSTR(SE2->E2_CODBAR,1,3) == "   "
+   _BANCO := SUBSTR(SA2->A2_BANCO,1,3)
+ELSE
+   _BANCO := SUBSTR(SE2->E2_CODBAR,1,3)
+ENDIF
+
+// Substituido pelo assistente de conversao do AP5 IDE em 26/09/00 ==> __return(_BANCO)
+
+Return(_BANCO)        // incluido pelo assistente de conversao do AP5 IDE em 26/09/00

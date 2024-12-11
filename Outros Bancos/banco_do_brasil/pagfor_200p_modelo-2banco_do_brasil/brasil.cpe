@@ -1,0 +1,54 @@
+TIPO REGISTRO  00100100                                                           
+CODIGO REMESSA 00200201                                                           
+FILER - BRANCOS0030090SPACE(7)                                                    
+TIPO DE SERVICO010011003                                                          
+INDICADOR CGC  0120120SPACE(1)                                                    
+VALOR DA TARIVA013017000000                                                       
+FILER - BRANCOS0180260SPACE(9)                                                    
+AGENCIA        0270300SUBSTR(SEE->EE_AGENCIA,1,4)                                 
+DIG. AGENCIA   0310310SUBSTR(SEE->EE_AGENCIA,5,1)                                 
+CONTA CORRENTE 0320400"0000"+SubStr(SEE->EE_CONTA,1,5)                            
+DIG CONTA C    0410410SUBSTR(SEE->EE_CONTA,6,1)                                   
+FILER - BRANCOS0420460SPACE(5)                                                    
+NOME EMPRESA   0470760SUBSTR(SM0->M0_NOME,1,30)                                   
+CODIGO BANCO   0770790"001"                                                       
+NRO CONVENIO   0800850ALLTRIM(SEE->EE_CODEMP)                                     
+TIPO DE RETORNO0860880"RET"                                                       
+CAMPO LIVRE    0890980SPACE(10)                                                   
+MEIO FISICO    0991000SPACE(2)                                                    
+USO BANCO      1011030SPACE(3)                                                    
+FILER - BRANCOS1041490SPACE(46)                                                   
+USO DO SISTEMA 1501570SPACE(8)                                                    
+USO BANCO      1581660SPACE(9)                                                    
+OPCAO LAYOUT   1671700"NOVO"                                                      
+FILER - BRANCOS1711850SPACE(15)                                                   
+FILER - BRANCOS1861940SPACE(9)                                                    
+SEQUENCIAL     1952000INCREMENTA()-1                                              
+TIPO REGISTRO  00100101                                                           
+FILER - BRANCOS0020020SPACE(1)                                                    
+INDICADOR DE CO0030030"1"                                                         
+CPF OU CGC CONF0040150SPACE(12)                                                   
+DV DO CPF      0160170SPACE(2)                                                    
+FILER - ZEROS  01802100000                                                        
+FILER - ZERO   0220220"0"                                                         
+FILER - ZEROS  0230310000000000                                                   
+FILER - ZERO   03203200                                                           
+LIVRE          0330420"00"+SE2->E2_FORNECE+SE2->E2_LOJA                           
+FILER -        0430500SPACE(8)                                                    
+NRO IDENTIFICAD0510560STRZERO(VAL(SA2->A2_IDENTIF),6)                             
+CAMARA CENTRALI0570590"000"                                                       
+COD BANCO      0600620IIF(SA2->A2_BANCO="001",SPACE(3),SA2->A2_BANCO)             
+AGENCIA FAVOREC0630660SUBSTR(SA2->A2_AGENCIA,1,4)                                 
+DIG. AGENCIA   0670670SUBSTR(SA2->A2_AGENCIA,5,1)                                 
+NRO CONTA DEPOS0680800PADL(ALLTRIM (SA2->A2_NUMCON),13,'0')                       
+FILER - BRANCOS0810820SPACE(2)                                                    
+NOME FAVORECIDO0831220SA2->A2_NOME                                                
+DATA CREDITO   1231280SE2->E2_VENCREA                                             
+VALOR          1291410STRZERO(INT(NOROUND(SE2->E2_SALDO*100)),13)                 
+CODIGO SERVICO 1421440"031"                                                       
+USO LIVRE      1451840SE2->E2_PREFIXO+SE2->E2_NUM+SE2->E2_PARCELA+SE2->E2_TIPO    
+FILER - BRANCOS1851940SPACE(10)                                                   
+SEQUENCIAL     1952000INCREMENTA()                                                
+TIPO REGISTRO  00100109                                                           
+FILER - BRANCOS002194 SPACE(193)                                                  
+SEQUENCIAL     1952000INCREMENTA()                                                

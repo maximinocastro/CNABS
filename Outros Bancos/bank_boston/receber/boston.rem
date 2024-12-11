@@ -1,0 +1,61 @@
+ident do reg   001001 '0'                                                         
+ident do arq   002002 '1'                                                         
+ident arq ext  003009 'REMESSA'                                                   
+ident do serv  010011 '01'                                                        
+ext do serv    012026 'COBRANCA'                                                  
+filler         027028 '00'                                                        
+tipo de arq    029029 '1'                                                         
+nr do conv     030037 '05063003'                                                  
+filler2        038046                                                             
+cedente        047076 SM0->M0_NOMECOM                                             
+nr branco      077079 '479'                                                       
+nome do branco 080094 'BANKBOSTON'                                                
+dt grav        095100 GRAVADATA(DATE(),.F.)                                       
+dens de grav   101105 '01600'                                                     
+unid dens grav 106108 'BPI'                                                       
+filler3        109199                                                             
+nr contrato    200207 '10727230'                                                  
+filler4        208394                                                             
+nr seq         395400 000001                                                      
+id tit         001001 '1'                                                         
+id tipo insc   002003 IF(RIGHT(SA1->A1_CGC,2)="  ",'01','02')                     
+nr inscr       004017 SA1->A1_CGC                                                 
+filler         018037                                                             
+reserv         038062                                                             
+nr tit         063071 '000000000'                                                 
+vlr antec      072082 '00000000000'                                               
+filler2        083083                                                             
+cod moeda      084087 'R$'                                                        
+resev2         088107                                                             
+id tipo cart   108108 '4'                                                         
+id ocorr       109110 IIF(SE1->E1_OCORREN='  ','01',SE1->E1_OCORREN)              
+nr tit ced     111120 SE1->E1_PREFIXO+SE1->E1_NUM+ALLTRIM(SE1->E1_PARCELA)        
+dt vencto      121126 GRAVADATA(SE1->E1_VENCTO,.F.)                               
+vlr tit        127139 MOEDA(SE1->E1_VALOR,1,"R")*100                              
+cod banco      140142 '479'                                                       
+filler         143147                                                             
+cod id tit     148149 'DM'                                                        
+id tit         150150 'N'                                                         
+dt emissao     151156 GRAVADATA(SE1->E1_EMISSAO,.F.)                              
+cod instr      157158 '01'                                                        
+nr dias instr  159160 '10'                                                        
+juros de mora  161173 '0000000000000'                                             
+dt descto      174179 '000000'                                                    
+vlr descto     180192 '0000000000000'                                             
+iof seg        193205 '0000000000000'                                             
+vlr abat       206218 '0000000000000'                                             
+cod insc sacado219220 (RIGHT(SA1->A1_CGC,2)=" ",'01','02')                        
+inscr sacado   221234 EXECBLOCK('DELCNAB',.F.,.F.)                                
+sacado         235274 SA1->A1_NOME                                                
+endereco       275311 SA1->A1_ENDCOB                                              
+filler3        312314                                                             
+compl nr tit   315326                                                             
+cep sacado     327334 SA1->A1_CEPC                                                
+cidade sac     335349 SA1->A1_MUNC                                                
+estado sac     350351 SA1->A1_ESTC                                                
+msg            352391                                                             
+filler4        392394                                                             
+nr seg         395400 INCREMENTA()                                                
+id reg trailler001001 '9'                                                         
+filler         002394                                                             
+nr seq         395400 INCREMENTA()                                                

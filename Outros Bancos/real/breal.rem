@@ -1,0 +1,62 @@
+CODIGO REGISTRO0010010'0'                                                         
+CONSTANTE      002026 '1REMESSA01COBRANCA'                                        
+ZERO           0270270'0'                                                         
+AGENCIA CEDENTE0280310SEE->EE_AGENCIA                                             
+ZERO           0320320'0'                                                         
+CONTA CEDENTE  0330390EXECBLOCK("CTABANCO")                                       
+BRANCOS        0400460                                                            
+NOME DA EMPRESA0470760SUBST(SM0->M0_NOME,1,30)                                    
+CODIGO BANCO   0770790'275'                                                       
+NOME DO BANCO  0800940'BANCO REAL S.A.'                                           
+DATA GRAVACAO  0951000GRAVADATA(dDATABASE,.F.)                                    
+CONSTANTE      1011080'01600BPI'                                                  
+BRANCOS        109394                                                             
+SEQUENCIA      3954000000001                                                      
+CODIGO REGISTRO0010010'1'                                                         
+CODIGO INSCR   0020030'02'                                                        
+CGC\CPF        0040170SUBSTR(SM0->M0_CGC,1,14)                                    
+BRANCOS        0180180'0'                                                         
+AGENCIA CEDENTE0190220SEE->EE_AGENCIA                                             
+ZERO           0230231'0'                                                         
+CONTA CEDENTE  0240300EXECBLOCK("CTABANCO")                                       
+BRANCOS        0310370                                                            
+CAMPO ESPECIAL 0380620                                                            
+NUMERO TITULO  0630710"000" + SE1->E1_NUM+SE1->E1_PARCELA                         
+BRANCOS        0720950                                                            
+CONTRATO       0961040REPLI('0',9)                                                
+BRANCOS        1051070                                                            
+CARTEIRA       1081080"5"                                                         
+COD. OCORRENCIA1091100IIF(SE1->E1_OCORREN='  ','01',SE1->E1_OCORREM)              
+NUMERO TITULO  1111200SE1->E1_PREFIXO+SE1->E1_NUM+SE1->E1_PARCELA                 
+DATA VENCIMENTO1211260SE1->E1_VENCTO                                              
+VALOR TITULO   1271390STRZERO(INT(SE1->E1_SALDO*100),13)                          
+IDENT. BANCO   1401420'275'                                                       
+AGENCIA COBRADO1431470REPLI("0",5)                                                
+ESPECIE TITULO 1481490"07"                                                        
+ACEITE         1501500'A/N'                                                       
+DATA EMISSAO   1511560SE1->E1_EMISSAO                                             
+CODIGO PROTESTO1571580'  '                                                        
+BRANCOS        1591600                                                            
+JUROS MORA     1611730STRZERO(INT(9*100),13)                                      
+DATA LIMITE    1741790'000000'                                                    
+VALOR DESCONTO 1801920STRZERO(INT(SE1->E1_DESCONT*100),13)                        
+I.O.C          193205 REPLI("0",13)                                               
+ABATIMENTO     2062180REPLI("0",13)                                               
+COD.INSC.SACADO2192200IF(RIGHT(SA1->A1_CGC,2)='  ',01,02)                         
+CPF/CGC        2212340IF(SUBS(SA1->A1_CGC,2)='  ',REPLI('0',14),SA1->A1_CGC)      
+NOME SACADO    2352740SUBS(SA1->A1_NOME,1,40)                                     
+ENDERECO       2753140SUBS(SA1->A1_END,1,40)                                      
+BAIRRO         3153260SUBS(SA1->A1_BAIRRO,1,12)                                   
+CEP            3273340IF(RIGHT(SA1->A1_CEP,1)=' ',00000000,SUBS(SA1->A1_CEP,1,8)) 
+CIDADE         3353490SUBS(SA1->A1_MUN,1,15)                                      
+ESTADO         3503510SUBS(SA1->A1_EST,1,2)                                       
+MENSAGEM       3523910"E' NATURAL. E' CLAC."                                      
+BRANCOS        3923920                                                            
+VALOR/MOEDA    3933930'7'                                                         
+TIPO MOEDA     3943940'7'                                                         
+NUMERO SEQUENC.3954000INCREMENTA()                                                
+CODIGO REGISTRO0010010'9'                                                         
+QUANT. TITULOS 0020070INCREMENTA()-2                                              
+VALOR TOTAL    0080200SOMAVALOR()                                                 
+BRANCO         021394                                                             
+NUMERO SEQUENC.3954000INCREMENTA()                                                
